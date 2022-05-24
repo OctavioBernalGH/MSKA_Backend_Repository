@@ -1,5 +1,5 @@
 package com.http.mska.services;
 
-public class UsuariosServiceImp {
+public interface IUsuarioService {
 
 }

@@ -1,5 +1,5 @@
 package com.http.mska.controllers;
 
-public class UsuariosController {
+public class UsuarioController {
 
 }

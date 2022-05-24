@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -15,7 +16,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "usuarios")
-public class Usuarios {
+public class Usuario {
 
 	/** Se genera el ID de forma auto incremental en la base de datos */
 	@Id
@@ -79,4 +80,11 @@ public class Usuarios {
 
 	@Column(name = "uri_foto")
 	private String uriFoto;
+	
+	@OneToOne(mappedBy = "usuario")
+	private Tecnico tecnico;
+	
+	@OneToOne(mappedBy = "usuario")
+	private Reclutador reclutador;
+
 }
