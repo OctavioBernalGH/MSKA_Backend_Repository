@@ -38,5 +38,4 @@ public class TecnicoServiceImpl implements TecnicoService{
 	public Tecnico buscarTecnico(Long id) {
 		return tecnicoDao.findById(id).get();
 	}
-
 }
