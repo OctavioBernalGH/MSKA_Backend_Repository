@@ -19,5 +19,5 @@ public interface IUsuarioService {
 	public Usuario modificarUsuario(Usuario usuario);
 	
 	/** Método para eliminar un usuario existente */
-	public Usuario eliminarUsuario(Long id);
+	public void eliminarUsuario(Long id);
 }
