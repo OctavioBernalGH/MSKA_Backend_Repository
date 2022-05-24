@@ -2,6 +2,8 @@ package com.http.mska.controllers;
 
 import java.util.List;
 
+import javax.persistence.Column;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -74,7 +76,11 @@ public class BandagesTecnicoController {
 		/** Se actualizan los valores */
 		bandages_Tecnico_a_actualizar.setId(bandagesTecnico.getId());
 		bandages_Tecnico_a_actualizar.setNombre(bandagesTecnico.getNombre());
-
+		bandages_Tecnico_a_actualizar.setDesencadenante(bandagesTecnico.getDesencadenante());
+		bandages_Tecnico_a_actualizar.setTipo(bandagesTecnico.getTipo());
+		bandages_Tecnico_a_actualizar.setDescripcion(bandagesTecnico.getDescripcion());
+		bandages_Tecnico_a_actualizar.setCantidadExp(bandagesTecnico.getCantidadExp());
+	
 		actualizado = bandagesTecnicoServiceImpl.modificarBandageTecnico(bandages_Tecnico_a_actualizar);
 
 		return actualizado;
@@ -82,8 +88,8 @@ public class BandagesTecnicoController {
 
 	/** Método para eliminar un bandage de Tecnico */
 	@DeleteMapping("/bandagesTecnico/{id}")
-	public void eliminarBandagesTecnico(@PathVariable(name = "codigo") Long codigo) {
-		bandagesTecnicoServiceImpl.eliminarBandageTecnico(codigo);
-		System.out.println("Bandage de Tecnico eliminado con exito.");
+	public void eliminarBandagesTecnico(@PathVariable(name = "codigo") Long id) {
+		bandagesTecnicoServiceImpl.eliminarBandageTecnico(id);
+		System.out.println("Bandage de técnico eliminado con exito.");
 	}
 }

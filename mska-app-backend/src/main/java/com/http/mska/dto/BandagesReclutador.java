@@ -57,6 +57,14 @@ public class BandagesReclutador {
 		this.desencadenante = desencadenante;
 	}
 	
+	public String getTipo() {
+		return desencadenante;
+	}
+	
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+	
 	public String getDescripcion() {
 		return tipo;
 	}
@@ -65,7 +73,7 @@ public class BandagesReclutador {
 		this.descripcion = descripcion;
 	}
 	
-	public String getcantidadExp() {
+	public String getCantidadExp() {
 		return cantidadExp;
 	}
 	
