@@ -69,6 +69,9 @@ public class Usuario {
 	@Column(name = "num_mensajes")
 	private int numMensajes;
 
+	@Column(name = "num_trabajos")
+	private int numTrabajos;
+	
 	@Column(name = "num_valoraciones")
 	private int numValoraciones;
 
@@ -91,7 +94,6 @@ public class Usuario {
 	/** Constructores */
 	public Usuario() {}
 	
-	
 	/**
 	 * @param id
 	 * @param nombre
@@ -109,6 +111,7 @@ public class Usuario {
 	 * @param linkedin
 	 * @param numEntrevista
 	 * @param numMensajes
+	 * @param numTrabajos
 	 * @param numValoraciones
 	 * @param reclutadorBol
 	 * @param tecnicoBol
@@ -118,7 +121,7 @@ public class Usuario {
 	 */
 	public Usuario(Long id, String nombre, String apellidos, String email, String nombreUsuario, String contraseña,
 			String poblacion, String pais, String codigoPostal, Date fechaRegistro, Date fechaNacimiento, int movil,
-			String instagram, String linkedin, int numEntrevista, int numMensajes, int numValoraciones,
+			String instagram, String linkedin, int numEntrevista, int numMensajes, int numTrabajos, int numValoraciones,
 			boolean reclutadorBol, boolean tecnicoBol, String uriFoto, Tecnico tecnico, Reclutador reclutador) {
 		super();
 		this.id = id;
@@ -137,6 +140,7 @@ public class Usuario {
 		this.linkedin = linkedin;
 		this.numEntrevista = numEntrevista;
 		this.numMensajes = numMensajes;
+		this.numTrabajos = numTrabajos;
 		this.numValoraciones = numValoraciones;
 		this.reclutadorBol = reclutadorBol;
 		this.tecnicoBol = tecnicoBol;
@@ -144,6 +148,7 @@ public class Usuario {
 		this.tecnico = tecnico;
 		this.reclutador = reclutador;
 	}
+
 
 	/**
 	 * @return the id
@@ -451,6 +456,20 @@ public class Usuario {
 	 */
 	public void setReclutador(Reclutador reclutador) {
 		this.reclutador = reclutador;
+	}
+
+	/**
+	 * @return the numTrabajos
+	 */
+	public int getNumTrabajos() {
+		return numTrabajos;
+	}
+
+	/**
+	 * @param numTrabajos the numTrabajos to set
+	 */
+	public void setNumTrabajos(int numTrabajos) {
+		this.numTrabajos = numTrabajos;
 	}
 	
 	
