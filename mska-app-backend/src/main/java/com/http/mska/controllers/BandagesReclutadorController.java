@@ -73,6 +73,10 @@ public class BandagesReclutadorController {
 	/** Se actualizan los valores */
 	bandages_reclutador_a_actualizar.setId(bandagesReclutador.getId());
 	bandages_reclutador_a_actualizar.setNombre(bandagesReclutador.getNombre());
+	bandages_reclutador_a_actualizar.setDesencadenante(bandagesReclutador.getDesencadenante());
+	bandages_reclutador_a_actualizar.setTipo(bandagesReclutador.getTipo());
+	bandages_reclutador_a_actualizar.setDescripcion(bandagesReclutador.getDescripcion());
+	bandages_reclutador_a_actualizar.setCantidadExp(bandagesReclutador.getCantidadExp());
 
 	actualizado = bandagesReclutadorServiceImpl.modificarBandageReclutador(bandages_reclutador_a_actualizar);
 
@@ -81,8 +85,8 @@ public class BandagesReclutadorController {
 	
 	/** Método para eliminar un bandage de reclutador */
 	@DeleteMapping("/bandagesReclutador/{id}")
-	public void eliminarBandagesReclutador(@PathVariable(name = "codigo") Long codigo) {
-		bandagesReclutadorServiceImpl.eliminarBandageReclutador(codigo);
+	public void eliminarBandagesReclutador(@PathVariable(name = "id") Long id) {
+		bandagesReclutadorServiceImpl.eliminarBandageReclutador(id);
 		System.out.println("Bandage de reclutador eliminado con exito.");
 	}
 }

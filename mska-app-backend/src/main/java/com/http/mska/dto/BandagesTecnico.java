@@ -56,6 +56,14 @@ public class BandagesTecnico {
 		this.desencadenante = desencadenante;
 	}
 	
+	public String getTipo() {
+		return desencadenante;
+	}
+	
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+	
 	public String getDescripcion() {
 		return tipo;
 	}
@@ -64,7 +72,7 @@ public class BandagesTecnico {
 		this.descripcion = descripcion;
 	}
 	
-	public String getcantidadExp() {
+	public String getCantidadExp() {
 		return cantidadExp;
 	}
 	
