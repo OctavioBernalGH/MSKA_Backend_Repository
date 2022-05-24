@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -35,5 +36,5 @@ public class Tecnico {
 	// Un tecnico tiene un id de usuario
 	@OneToOne
 	@JoinColumn(name="fk_id_usuario")
-	private List<Usuario> usuario;
+	private Usuario usuario;
 }
