@@ -15,7 +15,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "usuarios")
-public class Usuarios {
+public class Usuario {
 
 	/** Se genera el ID de forma auto incremental en la base de datos */
 	@Id
