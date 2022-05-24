@@ -1,5 +1,9 @@
 package com.http.mska.dao;
 
-public class BangadesReclutadorDAO {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.http.mska.dto.BandagesReclutador;
+
+public interface BangadesReclutadorDAO extends JpaRepository<BandagesReclutador, Long>{	
 
 }
