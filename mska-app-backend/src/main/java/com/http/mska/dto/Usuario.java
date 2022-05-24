@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
 /**
  * Se define la clase Usuarios como entidad y se mapea con la tabla usuarios de
@@ -83,7 +82,7 @@ public class Usuario {
 
 	@Column(name = "uri_foto")
 	private String uriFoto;
-	
+
 	/** Relaciones OneToOne */
 	@OneToOne(mappedBy = "usuario")
 	private Tecnico tecnico;
@@ -472,6 +471,4 @@ public class Usuario {
 		this.numTrabajos = numTrabajos;
 	}
 	
-	
-
 }
