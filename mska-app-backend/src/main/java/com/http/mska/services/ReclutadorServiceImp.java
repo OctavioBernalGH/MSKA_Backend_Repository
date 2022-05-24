@@ -3,10 +3,12 @@ package com.http.mska.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.http.mska.dao.IReclutadorDAO;
 import com.http.mska.dto.Reclutador;
 
+@Service
 public class ReclutadorServiceImp implements IReclutadorService{
 
 	@Autowired

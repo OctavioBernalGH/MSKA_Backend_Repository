@@ -20,22 +20,22 @@ import com.http.mska.services.ReclutadorServiceImp;
 public class ReclutadorController {
 	
 	@Autowired
-	ReclutadorServiceImp reclutadorServiceImpl;
+	ReclutadorServiceImp reclutadorServiceImp;
 
 	@GetMapping("/reclutadores")
 	public List<Reclutador> listarReclutador(){
-		return reclutadorServiceImpl.listarReclutadores();
+		return reclutadorServiceImp.listarReclutadores();
 	}
 	
 	@PostMapping("/reclutadores")
 	public Reclutador guardarReclutador(@RequestBody Reclutador reclutador) {
-		return reclutadorServiceImpl.guardarReclutador(reclutador);
+		return reclutadorServiceImp.guardarReclutador(reclutador);
 	}
 	
 	@GetMapping("/reclutador/{id}")
 	public Reclutador reclutadorXID(@PathVariable(name="id") Long id) {
 		Reclutador reclutador_xid = new Reclutador();
-		reclutador_xid = reclutadorServiceImpl.reclutadorXID(id);
+		reclutador_xid = reclutadorServiceImp.reclutadorXID(id);
 		
 		return reclutador_xid;
 	}
@@ -44,7 +44,7 @@ public class ReclutadorController {
 		Reclutador reclutador_selec = new Reclutador();
 		Reclutador reclutador_actu 	= new Reclutador();
 		
-		reclutador_selec = reclutadorServiceImpl.reclutadorXID(id);
+		reclutador_selec = reclutadorServiceImp.reclutadorXID(id);
 		
 		reclutador_selec.setExperiencia(reclutador.getExperiencia());
 		reclutador_selec.setNivel(reclutador.getNivel());
@@ -57,6 +57,6 @@ public class ReclutadorController {
 	}
 	@DeleteMapping("/reclutadores/{id}")
 	public void eliminarReclutador(@PathVariable (name ="id") Long id) {
-		reclutadorServiceImpl.eliminarReclutador(id);
+		reclutadorServiceImp.eliminarReclutador(id);
 	}
 }
