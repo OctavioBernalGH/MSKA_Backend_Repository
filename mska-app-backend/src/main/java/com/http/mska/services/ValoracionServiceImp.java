@@ -9,7 +9,7 @@ import com.http.mska.dao.IValoracionDAO;
 import com.http.mska.dto.Valoracion;
 
 @Service
-public class ValoracionServiceImpl implements IValoracionService{
+public class ValoracionServiceImp implements IValoracionService{
 	
 	@Autowired
 	IValoracionDAO iValoracionDAO;

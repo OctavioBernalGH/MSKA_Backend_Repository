@@ -13,28 +13,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.http.mska.dto.Valoracion;
-import com.http.mska.services.ValoracionServiceImpl;
+import com.http.mska.services.ValoracionServiceImp;
 
 @RestController
 @RequestMapping("/api")
 public class ValoracionController {
 	
 	@Autowired
-	ValoracionServiceImpl valoracionServiceImpl;
+	ValoracionServiceImp valoracionServiceImp;
 	
 	//TODO: Sentences
 	@GetMapping("/valoracion")
 	public List<Valoracion> listarValoraciones(){
-		return valoracionServiceImpl.listarValoraciones();
+		return valoracionServiceImp.listarValoraciones();
 	}
 
 	@GetMapping("/valoracion/{id}")
 	public Valoracion buscarValoracionXID(@PathVariable (name = "id") Long id) {
-		return valoracionServiceImpl.buscarValoracionXID(id);
+		return valoracionServiceImp.buscarValoracionXID(id);
 	}
 	@PostMapping("/valoracion")
 	public Valoracion crearValoracion(@PathVariable (name = "id") Long id, @RequestBody Valoracion valoracion) {
-		return valoracionServiceImpl.crearValoracion(valoracion);
+		return valoracionServiceImp.crearValoracion(valoracion);
 	}
 	@PutMapping("/valoracion/{}id")
 	public Valoracion modificarValoracion(@PathVariable (name = "id") Long id, @RequestBody Valoracion valoracion) {
@@ -46,10 +46,10 @@ public class ValoracionController {
 		valoracion_sel.setReclutador(valoracion.getReclutador());
 		valoracion_sel.setTecnico(valoracion.getTecnico());
 		
-		return valoracion_actu = valoracionServiceImpl.modificarValoracion(valoracion_actu);
+		return valoracion_actu = valoracionServiceImp.modificarValoracion(valoracion_actu);
 	}
 	@DeleteMapping("/valoracion/{id}")
 	public void eliminarValoracion(@PathVariable(name = "id")Long id) {
-		valoracionServiceImpl.eliminarValoracion(id);
+		valoracionServiceImp.eliminarValoracion(id);
 	}
 }
