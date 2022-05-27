@@ -10,9 +10,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "BandagesReclutador")
+@Table(name = "BandageReclutador")
 	
-public class BandagesReclutador {
+public class BandageReclutador {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -81,11 +81,11 @@ public class BandagesReclutador {
 		this.cantidadExp = cantidadExp;
 	}
 	
-	public BandagesReclutador() {
+	public BandageReclutador() {
 		super();
 	}
 
-	public BandagesReclutador(Long id, String nombre, String desencadenante, String tipo, String descripcion,
+	public BandageReclutador(Long id, String nombre, String desencadenante, String tipo, String descripcion,
 			String cantidadExp) {
 		super();
 		this.id = id;
