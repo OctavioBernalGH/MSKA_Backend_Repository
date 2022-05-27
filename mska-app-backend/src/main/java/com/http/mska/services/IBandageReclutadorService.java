@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.http.mska.dto.BandagesReclutador;
 
-public interface BandagesReclutadorService {
+public interface IBandageReclutadorService {
 	
 	//Listar los bandages de reclutador
 	public List<BandagesReclutador> listarBandagesReclutador();
