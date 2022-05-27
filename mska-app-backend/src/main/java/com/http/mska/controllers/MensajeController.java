@@ -58,7 +58,7 @@ public class MensajeController {
 		mensaje_a_modificar.setMensaje(mensaje.getMensaje());
 		mensaje_a_modificar.setFecha_mensaje(mensaje.getFecha_mensaje());
 		mensaje_a_modificar.setUsuario(mensaje.getUsuario());
-
+		mensaje_a_modificar.setDestinatario(mensaje.getDestinatario());
 		// Se vuelcan las modificaciones.
 		modificado = mensajeServiceImpl.modificarMensaje(mensaje_a_modificar);
 
@@ -66,7 +66,7 @@ public class MensajeController {
 		return modificado;
 	}
 
-	@DeleteMapping("/mensaje/id")
+	@DeleteMapping("/mensaje/{id}")
 	public String eliminarMensajeXIdentificador(@PathVariable(name = "id") Long id) {
 		mensajeServiceImpl.eliminarMensaje(id);
 		return "Usuario eliminado con éxito";

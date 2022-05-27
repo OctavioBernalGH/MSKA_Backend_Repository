@@ -34,10 +34,10 @@ public class EntrevistaController {
 		return entrevistaServiceImp.buscarEntrevistaXID(id);
 	}
 	@PostMapping("/entrevista")
-	public Entrevista crearEntrevista(@PathVariable (name = "id") Long id, @RequestBody Entrevista entrevista) {
+	public Entrevista crearEntrevista(@RequestBody Entrevista entrevista) {
 		return entrevistaServiceImp.crearEntrevista(entrevista);
 	}
-	@PutMapping("/entrevista/{}id")
+	@PutMapping("/entrevista/{id}")
 	public Entrevista modificarEntrevista(@PathVariable (name = "id") Long id, @RequestBody Entrevista entrevista) {
 		
 		/** Se definen instancias del tipo Entrevista */
@@ -51,10 +51,13 @@ public class EntrevistaController {
 		entrevista_a_actualizar.setDuracion(entrevista.getDuracion());
 		entrevista_a_actualizar.setEstado_entrevista(entrevista.isEstado_entrevista());
 		entrevista_a_actualizar.setFecha_entrevista(entrevista.getFecha_entrevista());
-		entrevista_a_actualizar.setId(entrevista.getId());
+		entrevista_a_actualizar.setEntrevistador(entrevista.getEntrevistador());
+		entrevista_a_actualizar.setEntrevistado(entrevista.getEntrevistado());
 		
+		/** Se vuelcan los nuevos datos */
 		entrevista_modificada = entrevistaServiceImp.modificarEntrevista(entrevista_a_actualizar);
-				
+		
+		/** Se retorna ya actualizado */
 		return entrevista_modificada;
 	}
 	

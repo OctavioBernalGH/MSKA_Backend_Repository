@@ -16,7 +16,7 @@ import javax.persistence.Table;
 
 /** Se define una entidad y se asocia a una tabla */
 @Entity
-@Table(name = "mensajes")
+@Table(name = "mensaje")
 public class Mensaje {
 
 	/** Generar ID de forma auto incremental */
@@ -32,8 +32,12 @@ public class Mensaje {
 	private Date fecha_mensaje;
 	
 	@ManyToOne
-	@JoinColumn(name = "usuario")
+	@JoinColumn(name = "fk_id_emisor")
 	private Usuario usuario;
+	
+	@ManyToOne
+	@JoinColumn(name = "fk_id_receptor")
+	private Usuario destinatario;
 	
 	/** Constructores */
 	public Mensaje() {
@@ -46,13 +50,14 @@ public class Mensaje {
 	 * @param fecha_mensaje
 	 * @param usuario
 	 */
-	public Mensaje(Long id, String mensaje, Date fecha_mensaje, Usuario usuario) {
+	public Mensaje(Long id, String mensaje, Date fecha_mensaje, Usuario usuario, Usuario destinatario) {
 		// Constructor completo
 		super();
 		this.id = id;
 		this.mensaje = mensaje;
 		this.fecha_mensaje = fecha_mensaje;
 		this.usuario = usuario;
+		this.destinatario = destinatario;
 	}
 
 	/**
@@ -110,7 +115,20 @@ public class Mensaje {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
+
+	/**
+	 * @return the destinatario
+	 */
+	public Usuario getDestinatario() {
+		return destinatario;
+	}
+
+	/**
+	 * @param destinatario the destinatario to set
+	 */
+	public void setDestinatario(Usuario destinatario) {
+		this.destinatario = destinatario;
+	}
 	
 	
 	
