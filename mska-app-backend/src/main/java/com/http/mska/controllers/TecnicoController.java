@@ -3,6 +3,7 @@ package com.http.mska.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,31 +21,31 @@ public class TecnicoController {
 	@Autowired
 	TecnicoServiceImpl tecnicoServiceImpl;
 
-	// Listar todos los tecnicos
+	// Listar todos los Tecnico
 	@GetMapping("/tecnico")
 	public List<Tecnico> listarPiezas(){
 		return tecnicoServiceImpl.listarTecnico();
 	}
 
-	// Buscar las piezas por id
+	// Buscar las Tecnico por id
 	@GetMapping("/tecnico/{id}")
 	public Tecnico buscarPiezaCodigo(@PathVariable(name= "id")Long id) {
 		return tecnicoServiceImpl.buscarTecnico(id);		
 	}
 
-	// Eliminar una piezas
-	@GetMapping("/tecnico/{id}")
+	// Eliminar una Tecnico
+	@DeleteMapping("/tecnico/{id}")
 	public void eliminarPiezas(@PathVariable(name="id")Long id) {
 		tecnicoServiceImpl.eliminarTecnico(id);
 	}
 
-	// Crear piezas
+	// Crear Tecnico
 	@PostMapping("/tecnico")
 	public Tecnico crearPeliculas(@RequestBody Tecnico tecnico) {
 		return tecnicoServiceImpl.crearTecnico(tecnico);
 	}
 	
-	// Modificar sala
+	// Modificar Tecnico
 		@PutMapping("/tecnico/{id}")
 		public Tecnico modificarPiezas (@PathVariable(name="id")Long id, @RequestBody Tecnico tecnico) {
 			Tecnico tecnico_a_modificar = new Tecnico();
