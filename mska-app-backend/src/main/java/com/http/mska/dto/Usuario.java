@@ -15,7 +15,7 @@ import javax.persistence.Table;
  * la base de datos
  */
 @Entity
-@Table(name = "usuarios")
+@Table(name = "usuario")
 public class Usuario {
 
 	/** Se genera el ID de forma auto incremental en la base de datos */
@@ -76,10 +76,10 @@ public class Usuario {
 	private int numValoraciones;
 
 	@Column(name = "reclutador_bol")
-	private boolean reclutadorBol;
+	private int reclutadorBol;
 
 	@Column(name = "tecnico_bol")
-	private boolean tecnicoBol;
+	private int tecnicoBol;
 
 	@Column(name = "uri_foto")
 	private String uriFoto;
@@ -122,7 +122,7 @@ public class Usuario {
 	public Usuario(Long id, String nombre, String apellidos, String email, String nombreUsuario, String contraseña,
 			String poblacion, String pais, String codigoPostal, Date fechaRegistro, Date fechaNacimiento, int movil,
 			String instagram, String linkedin, int numEntrevista, int numMensajes, int numTrabajos, int numValoraciones,
-			boolean reclutadorBol, boolean tecnicoBol, String uriFoto, Tecnico tecnico, Reclutador reclutador) {
+			int reclutadorBol, int tecnicoBol, String uriFoto, Tecnico tecnico, Reclutador reclutador) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -391,28 +391,28 @@ public class Usuario {
 	/**
 	 * @return the reclutadorBol
 	 */
-	public boolean isReclutadorBol() {
+	public int getReclutadorBol() {
 		return reclutadorBol;
 	}
 
 	/**
 	 * @param reclutadorBol the reclutadorBol to set
 	 */
-	public void setReclutadorBol(boolean reclutadorBol) {
+	public void setReclutadorBol(int reclutadorBol) {
 		this.reclutadorBol = reclutadorBol;
 	}
 
 	/**
 	 * @return the tecnicoBol
 	 */
-	public boolean isTecnicoBol() {
+	public int getTecnicoBol() {
 		return tecnicoBol;
 	}
 
 	/**
 	 * @param tecnicoBol the tecnicoBol to set
 	 */
-	public void setTecnicoBol(boolean tecnicoBol) {
+	public void setTecnicoBol(int tecnicoBol) {
 		this.tecnicoBol = tecnicoBol;
 	}
 
