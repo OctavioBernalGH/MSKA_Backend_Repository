@@ -28,7 +28,7 @@ import com.http.mska.services.BandagesReclutadorServiceImpl;
 @RestController
 @RequestMapping("/api")
 
-public class BandagesReclutadorController {
+public class BandageReclutadorController {
 	
 	/** Se crea una instancia del tipo @BandagesReclutadorServiceImpl */
 	@Autowired
