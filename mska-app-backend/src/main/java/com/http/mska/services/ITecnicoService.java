@@ -6,7 +6,7 @@ import com.http.mska.dto.Tecnico;
 
 
 
-public interface TecnicoService {
+public interface ITecnicoService {
 	public List<Tecnico> listarTecnico();
 
 	public Tecnico crearTecnico(Tecnico tecnico);
