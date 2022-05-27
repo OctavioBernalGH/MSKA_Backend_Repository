@@ -31,7 +31,7 @@ import com.http.mska.services.BandagesTecnicoServiceImpl;
 @RestController
 @RequestMapping("/api")
 
-public class BandagesTecnicoController {
+public class BandageTecnicoController {
 
 	/** Se crea una instancia del tipo @BandagesTecnicoServiceImpl */
 	@Autowired

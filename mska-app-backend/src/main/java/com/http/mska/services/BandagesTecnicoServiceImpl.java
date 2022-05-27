@@ -5,14 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.http.mska.dao.BandagesTecnicoDAO;
+import com.http.mska.dao.IBandageTecnicoDAO;
 import com.http.mska.dto.BandagesTecnico;
 
 @Service 
 
-public class BandagesTecnicoServiceImpl implements BandagesTecnicoService{
+public class BandagesTecnicoServiceImpl implements IBandageTecnicoService{
 	@Autowired
-	BandagesTecnicoDAO bandagesTecnicoDAO;
+	IBandageTecnicoDAO bandagesTecnicoDAO;
 
 	@Override
 	public List<BandagesTecnico> listarBandagesTecnico() {

@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.http.mska.dto.BandagesTecnico;
 
-public interface BandagesTecnicoService {
+public interface IBandageTecnicoService {
 		
 		//Listar los bandages de técnico
 		public List<BandagesTecnico> listarBandagesTecnico();

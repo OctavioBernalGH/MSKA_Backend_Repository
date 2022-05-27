@@ -5,13 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.http.mska.dao.TecnicoDAO;
+import com.http.mska.dao.ITecnicoDAO;
 import com.http.mska.dto.Tecnico;
 
 @Service
-public class TecnicoServiceImpl implements TecnicoService{
+public class TecnicoServiceImpl implements ITecnicoService{
 	@Autowired
-	TecnicoDAO tecnicoDao;
+	ITecnicoDAO tecnicoDao;
 
 	@Override
 	public List<Tecnico> listarTecnico() {
