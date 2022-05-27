@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.http.mska.dto.BandageReclutador;
 
-public interface BandagesReclutadorDAO extends JpaRepository<BandageReclutador, Long>{	
+public interface BandageReclutadorDAO extends JpaRepository<BandageReclutador, Long>{	
 
 }

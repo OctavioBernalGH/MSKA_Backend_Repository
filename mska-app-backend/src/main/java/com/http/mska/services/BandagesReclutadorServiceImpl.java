@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.http.mska.dao.BandagesReclutadorDAO;
+import com.http.mska.dao.BandageReclutadorDAO;
 import com.http.mska.dto.BandagesReclutador;
 
 @Service 
@@ -13,7 +13,7 @@ import com.http.mska.dto.BandagesReclutador;
 public class BandagesReclutadorServiceImpl implements BandagesReclutadorService{
 	
 	@Autowired
-	BandagesReclutadorDAO bandagesReclutadorDAO;
+	BandageReclutadorDAO bandagesReclutadorDAO;
 
 	@Override
 	public List<BandagesReclutador> listarBandagesReclutador() {
