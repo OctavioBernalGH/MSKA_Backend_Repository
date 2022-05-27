@@ -21,7 +21,7 @@ public class Valoracion {
 	private int estrellas = 0;
 
 	@Column(name = "comentario")
-	private Long comentario;
+	private String comentario;
 
 	@Column(name = "reclutador")
 	private String reclutador;
@@ -48,7 +48,7 @@ public class Valoracion {
 	 * @param tecnico
 	 * @param usuario
 	 */
-	public Valoracion(Long id, int estrellas, Long comentario, String reclutador, String tecnico, Usuario usuario) {
+	public Valoracion(Long id, int estrellas, String comentario, String reclutador, String tecnico, Usuario usuario) {
 		super();
 		this.id = id;
 		this.estrellas = estrellas;
@@ -89,14 +89,14 @@ public class Valoracion {
 	/**
 	 * @return the comentario
 	 */
-	public Long getComentario() {
+	public String getComentario() {
 		return comentario;
 	}
 
 	/**
 	 * @param comentario the comentario to set
 	 */
-	public void setComentario(Long comentario) {
+	public void setComentario(String comentario) {
 		this.comentario = comentario;
 	}
 
