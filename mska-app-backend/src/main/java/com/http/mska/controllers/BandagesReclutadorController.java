@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.http.mska.dto.BandagesReclutador;
-import com.http.mska.services.BandagesReclutadorServiceImpl;
+import com.http.mska.dto.BandageReclutador;
+import com.http.mska.services.BandageReclutadorServiceImpl;
 
 /**
- * Clase @BandagesReclutadorController. Mappea las funcionalidades con las rutas de la api.
+ * Clase @BandageReclutadorController. Mappea las funcionalidades con las rutas de la api.
  * 
  * @author Octavio Bernal.
  * @author Ixabel Justo.
@@ -28,65 +28,65 @@ import com.http.mska.services.BandagesReclutadorServiceImpl;
 @RestController
 @RequestMapping("/api")
 
-public class BandagesReclutadorController {
+public class BandageReclutadorController {
 	
-	/** Se crea una instancia del tipo @BandagesReclutadorServiceImpl */
+	/** Se crea una instancia del tipo @BandageReclutadorServiceImpl */
 	@Autowired
-	BandagesReclutadorServiceImpl bandagesReclutadorServiceImpl ;
+	BandageReclutadorServiceImpl bandageReclutadorServiceImpl ;
 
-	/** Método para listar bandages de reclutador */
-	@GetMapping("/bandagesReclutador")
-	public List<BandagesReclutador> listarBandagesReclutador() {
-		return bandagesReclutadorServiceImpl.listarBandagesReclutador();
+	/** Método para listar bandage de reclutador */
+	@GetMapping("/bandageReclutador")
+	public List<BandageReclutador> listarBandageReclutador() {
+		return bandageReclutadorServiceImpl.listarBandageReclutador();
 	}
 	
-	/** Método para listar bandagesReclutador por id */
-	@GetMapping("/bandagesReclutador/id/{id}")
-	public List<BandagesReclutador> listarBandagesReclutador(@PathVariable(name = "id") String id) {
+	/** Método para listar bandageReclutador por id */
+	@GetMapping("/bandageReclutador/id/{id}")
+	public List<BandageReclutador> listarBandageReclutador(@PathVariable(name = "id") String id) {
 		return null;
 	}
 
 	/** Método para crear un nuevo bandage de reclutador */
-	@PostMapping("/bandagesReclutador")
-	public BandagesReclutador crearBandagesReclutador(@RequestBody BandagesReclutador bandagesReclutador) {
-		return bandagesReclutadorServiceImpl.crearBandageReclutador(bandagesReclutador);
+	@PostMapping("/bandageReclutador")
+	public BandageReclutador crearBandageReclutador(@RequestBody BandageReclutador bandageReclutador) {
+		return bandageReclutadorServiceImpl.crearBandageReclutador(bandageReclutador);
 	}
 	
 	/** Método para buscar un bandage de reclutador por id */
-	@GetMapping("/bandagesReclutador/{id}")
-	public BandagesReclutador buscarBandagesReclutadorId(@PathVariable(name = "id") Long id) {
-		return bandagesReclutadorServiceImpl.buscarBandageReclutador(id);
+	@GetMapping("/bandageReclutador/{id}")
+	public BandageReclutador buscarBandageReclutadorId(@PathVariable(name = "id") Long id) {
+		return bandageReclutadorServiceImpl.buscarBandageReclutador(id);
 	}
 	
-	/** Método para actualizar un bandagesReclutador */
-	@PutMapping("/bandagesReclutador/{id}")
-	public BandagesReclutador actualizarBandagesReclutador(@PathVariable(name = "id") Long id,
-			@RequestBody BandagesReclutador bandagesReclutador) {
+	/** Método para actualizar un bandageReclutador */
+	@PutMapping("/bandageReclutador/{id}")
+	public BandageReclutador actualizarBandageReclutador(@PathVariable(name = "id") Long id,
+			@RequestBody BandageReclutador bandageReclutador) {
 		
-	/** Se definen instancias del tipo bandages de reclutador */
-	BandagesReclutador bandages_reclutador_a_actualizar = new BandagesReclutador();
-	BandagesReclutador actualizado = new BandagesReclutador();
+	/** Se definen instancias del tipo bandage de reclutador */
+	BandageReclutador bandage_reclutador_a_actualizar = new BandageReclutador();
+	BandageReclutador actualizado = new BandageReclutador();
 		
-	/** Se filtra el bandages de reclutador a actualizar por código */
-	bandages_reclutador_a_actualizar = bandagesReclutadorServiceImpl.buscarBandageReclutador(id);
+	/** Se filtra el bandage de reclutador a actualizar por código */
+	bandage_reclutador_a_actualizar = bandageReclutadorServiceImpl.buscarBandageReclutador(id);
 		
 	/** Se actualizan los valores */
-	bandages_reclutador_a_actualizar.setId(bandagesReclutador.getId());
-	bandages_reclutador_a_actualizar.setNombre(bandagesReclutador.getNombre());
-	bandages_reclutador_a_actualizar.setDesencadenante(bandagesReclutador.getDesencadenante());
-	bandages_reclutador_a_actualizar.setTipo(bandagesReclutador.getTipo());
-	bandages_reclutador_a_actualizar.setDescripcion(bandagesReclutador.getDescripcion());
-	bandages_reclutador_a_actualizar.setCantidadExp(bandagesReclutador.getCantidadExp());
+	bandage_reclutador_a_actualizar.setId(bandageReclutador.getId());
+	bandage_reclutador_a_actualizar.setNombre(bandageReclutador.getNombre());
+	bandage_reclutador_a_actualizar.setDesencadenante(bandageReclutador.getDesencadenante());
+	bandage_reclutador_a_actualizar.setTipo(bandageReclutador.getTipo());
+	bandage_reclutador_a_actualizar.setDescripcion(bandageReclutador.getDescripcion());
+	bandage_reclutador_a_actualizar.setCantidadExp(bandageReclutador.getCantidadExp());
 
-	actualizado = bandagesReclutadorServiceImpl.modificarBandageReclutador(bandages_reclutador_a_actualizar);
+	actualizado = bandageReclutadorServiceImpl.modificarBandageReclutador(bandage_reclutador_a_actualizar);
 
 		return actualizado;
 	}
 	
 	/** Método para eliminar un bandage de reclutador */
-	@DeleteMapping("/bandagesReclutador/{id}")
-	public void eliminarBandagesReclutador(@PathVariable(name = "id") Long id) {
-		bandagesReclutadorServiceImpl.eliminarBandageReclutador(id);
+	@DeleteMapping("/bandageReclutador/{id}")
+	public void eliminarBandageReclutador(@PathVariable(name = "id") Long id) {
+		bandageReclutadorServiceImpl.eliminarBandageReclutador(id);
 		System.out.println("Bandage de reclutador eliminado con exito.");
 	}
 }
