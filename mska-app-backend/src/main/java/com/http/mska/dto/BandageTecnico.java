@@ -10,7 +10,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "BandageTecnico")
+@Table(name = "bandage_tecnico")
 
 public class BandageTecnico {
 
@@ -20,12 +20,14 @@ public class BandageTecnico {
 
 	@Column(name = "nombre")
 	private String nombre;
-	@Column(name = "desencadenante")
-	private String desencadenante;
+	
+
 	@Column(name = "tipo")
 	private String tipo;
+	
 	@Column(name = "descripcion")
 	private String descripcion;
+	
 	@Column(name = "cantidadExp")
 	private String cantidadExp;
 
@@ -48,16 +50,9 @@ public class BandageTecnico {
 		this.nombre = nombre;
 	}
 	
-	public String getDesencadenante() {
-		return desencadenante;
-	}
-	
-	public void setDesencadenante(String desencadenante) {
-		this.desencadenante = desencadenante;
-	}
 	
 	public String getTipo() {
-		return desencadenante;
+		return tipo;
 	}
 	
 	public void setTipo(String tipo) {
@@ -84,12 +79,11 @@ public class BandageTecnico {
 		super();
 	}
 
-	public BandageTecnico(Long id, String nombre, String desencadenante, String tipo, String descripcion,
+	public BandageTecnico(Long id, String nombre, String tipo, String descripcion,
 			String cantidadExp) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-		this.desencadenante = desencadenante;
 		this.tipo = tipo;
 		this.descripcion = descripcion;
 		this.cantidadExp = cantidadExp;

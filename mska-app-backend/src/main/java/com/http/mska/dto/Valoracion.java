@@ -1,15 +1,12 @@
 package com.http.mska.dto;
 
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,63 +18,130 @@ public class Valoracion {
 	private Long id;
 
 	@Column(name = "estrellas")
-	private int estrellas =0;
+	private int estrellas = 0;
+
 	@Column(name = "comentario")
 	private Long comentario;
-	
-	@OneToMany(mappedBy= "valoracion")
-	private Set<ComentarioValoracion> comentarios;
-	
-	@OneToOne
-	@JoinColumn(name="fk_id_usuario")
-	private Tecnico tecnico;
-	
-	@OneToOne
-	@JoinColumn(name="fk_id_usuario")
-	private Reclutador reclutador;
 
-	public Valoracion(int estrellas, Long comentario, Tecnico tecnico, Reclutador reclutador) {
+	@Column(name = "reclutador")
+	private String reclutador;
+
+	@Column(name = "tecnico")
+	private String tecnico;
+
+	/** Relacion N a 1 con usuarios */
+	@ManyToOne
+	@JoinColumn(name = "fk_id_usuario")
+	private Usuario usuario;
+
+	/** Constructor por defecto */
+	public Valoracion() {
+	}
+
+	/**
+	 * Constructor completo.
+	 * 
+	 * @param id
+	 * @param estrellas
+	 * @param comentario
+	 * @param reclutador
+	 * @param tecnico
+	 * @param usuario
+	 */
+	public Valoracion(Long id, int estrellas, Long comentario, String reclutador, String tecnico, Usuario usuario) {
 		super();
+		this.id = id;
 		this.estrellas = estrellas;
 		this.comentario = comentario;
-		this.tecnico = tecnico;
 		this.reclutador = reclutador;
+		this.tecnico = tecnico;
+		this.usuario = usuario;
 	}
 
-	public Valoracion() {
-		super();
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
 	}
 
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return the estrellas
+	 */
 	public int getEstrellas() {
 		return estrellas;
 	}
 
+	/**
+	 * @param estrellas the estrellas to set
+	 */
 	public void setEstrellas(int estrellas) {
 		this.estrellas = estrellas;
 	}
 
+	/**
+	 * @return the comentario
+	 */
 	public Long getComentario() {
 		return comentario;
 	}
 
+	/**
+	 * @param comentario the comentario to set
+	 */
 	public void setComentario(Long comentario) {
 		this.comentario = comentario;
 	}
 
-	public Tecnico getTecnico() {
-		return tecnico;
-	}
-
-	public void setTecnico(Tecnico tecnico) {
-		this.tecnico = tecnico;
-	}
-
-	public Reclutador getReclutador() {
+	/**
+	 * @return the reclutador
+	 */
+	public String getReclutador() {
 		return reclutador;
 	}
 
-	public void setReclutador(Reclutador reclutador) {
+	/**
+	 * @param reclutador the reclutador to set
+	 */
+	public void setReclutador(String reclutador) {
 		this.reclutador = reclutador;
 	}
+
+	/**
+	 * @return the tecnico
+	 */
+	public String getTecnico() {
+		return tecnico;
+	}
+
+	/**
+	 * @param tecnico the tecnico to set
+	 */
+	public void setTecnico(String tecnico) {
+		this.tecnico = tecnico;
+	}
+
+	/**
+	 * @return the usuario
+	 */
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	/**
+	 * @param usuario the usuario to set
+	 */
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 	
+	
+
 }

@@ -36,17 +36,20 @@ public class ValoracionController {
 	public Valoracion crearValoracion(@PathVariable (name = "id") Long id, @RequestBody Valoracion valoracion) {
 		return valoracionServiceImp.crearValoracion(valoracion);
 	}
-	@PutMapping("/valoracion/{}id")
+	@PutMapping("/valoracion/{id}")
 	public Valoracion modificarValoracion(@PathVariable (name = "id") Long id, @RequestBody Valoracion valoracion) {
 		Valoracion valoracion_sel 	= new Valoracion();
 		Valoracion valoracion_actu 	= new Valoracion();
 		
+		valoracion_sel = valoracionServiceImp.buscarValoracionXID(id);
+		
 		valoracion_sel.setEstrellas(valoracion.getEstrellas());
 		valoracion_sel.setComentario(valoracion.getComentario());
 		valoracion_sel.setReclutador(valoracion.getReclutador());
-		valoracion_sel.setTecnico(valoracion.getTecnico());
+		valoracion_sel.setTecnico(valoracion.getReclutador());
+		valoracion_sel.setUsuario(valoracion.getUsuario());
 		
-		return valoracion_actu = valoracionServiceImp.modificarValoracion(valoracion_actu);
+		return valoracion_actu = valoracionServiceImp.modificarValoracion(valoracion_sel);
 	}
 	@DeleteMapping("/valoracion/{id}")
 	public void eliminarValoracion(@PathVariable(name = "id")Long id) {

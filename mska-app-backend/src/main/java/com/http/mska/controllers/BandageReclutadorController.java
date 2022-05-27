@@ -75,7 +75,6 @@ public class BandageReclutadorController {
 	/** Se actualizan los valores */
 	bandage_reclutador_a_actualizar.setId(bandageReclutador.getId());
 	bandage_reclutador_a_actualizar.setNombre(bandageReclutador.getNombre());
-	bandage_reclutador_a_actualizar.setDesencadenante(bandageReclutador.getDesencadenante());
 	bandage_reclutador_a_actualizar.setTipo(bandageReclutador.getTipo());
 	bandage_reclutador_a_actualizar.setDescripcion(bandageReclutador.getDescripcion());
 	bandage_reclutador_a_actualizar.setCantidadExp(bandageReclutador.getCantidadExp());

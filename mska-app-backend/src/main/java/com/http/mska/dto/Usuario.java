@@ -1,14 +1,18 @@
 package com.http.mska.dto;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * Se define la clase Usuarios como entidad y se mapea con la tabla usuarios de
@@ -84,12 +88,14 @@ public class Usuario {
 	@Column(name = "uri_foto")
 	private String uriFoto;
 
-	/** Relaciones OneToOne */
-	@OneToOne(mappedBy = "usuario")
-	private Tecnico tecnico;
+	/** Relaciones OneToMany */
+	@OneToMany
+	@JoinColumn(name = "id")
+	private List<Tecnico> tecnico;
 	
-	@OneToOne(mappedBy = "usuario")
-	private Reclutador reclutador;
+	@OneToMany
+	@JoinColumn(name = "id")
+	private List<Reclutador> reclutador;
 	
 	/** Constructores */
 	public Usuario() {}
@@ -122,7 +128,7 @@ public class Usuario {
 	public Usuario(Long id, String nombre, String apellidos, String email, String nombreUsuario, String contraseña,
 			String poblacion, String pais, String codigoPostal, Date fechaRegistro, Date fechaNacimiento, int movil,
 			String instagram, String linkedin, int numEntrevista, int numMensajes, int numTrabajos, int numValoraciones,
-			int reclutadorBol, int tecnicoBol, String uriFoto, Tecnico tecnico, Reclutador reclutador) {
+			int reclutadorBol, int tecnicoBol, String uriFoto, List<Tecnico> tecnico, List<Reclutador> reclutador) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -431,30 +437,36 @@ public class Usuario {
 	}
 
 	/**
-	 * @return the tecnico
+	 * Lista de tecnicos.
+	 * @return
 	 */
-	public Tecnico getTecnico() {
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Tecnico")
+	public List<Tecnico> getTecnico() {
 		return tecnico;
+	}
+
+	/**
+	 * Lista de tecnicos.
+	 * @return
+	 */
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Reclutador")
+	public List<Reclutador> getReclutador() {
+		return reclutador;
 	}
 
 	/**
 	 * @param tecnico the tecnico to set
 	 */
-	public void setTecnico(Tecnico tecnico) {
+	public void setTecnico(List<Tecnico> tecnico) {
 		this.tecnico = tecnico;
-	}
-
-	/**
-	 * @return the reclutador
-	 */
-	public Reclutador getReclutador() {
-		return reclutador;
 	}
 
 	/**
 	 * @param reclutador the reclutador to set
 	 */
-	public void setReclutador(Reclutador reclutador) {
+	public void setReclutador(List<Reclutador> reclutador) {
 		this.reclutador = reclutador;
 	}
 

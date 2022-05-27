@@ -76,7 +76,6 @@ public class BandageTecnicoController {
 		/** Se actualizan los valores */
 		bandage_Tecnico_a_actualizar.setId(bandageTecnico.getId());
 		bandage_Tecnico_a_actualizar.setNombre(bandageTecnico.getNombre());
-		bandage_Tecnico_a_actualizar.setDesencadenante(bandageTecnico.getDesencadenante());
 		bandage_Tecnico_a_actualizar.setTipo(bandageTecnico.getTipo());
 		bandage_Tecnico_a_actualizar.setDescripcion(bandageTecnico.getDescripcion());
 		bandage_Tecnico_a_actualizar.setCantidadExp(bandageTecnico.getCantidadExp());

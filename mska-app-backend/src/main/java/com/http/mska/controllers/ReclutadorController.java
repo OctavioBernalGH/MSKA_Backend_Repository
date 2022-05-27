@@ -22,22 +22,19 @@ public class ReclutadorController {
 	@Autowired
 	ReclutadorServiceImp reclutadorServiceImp;
 
-	@GetMapping("/reclutadores")
+	@GetMapping("/reclutador")
 	public List<Reclutador> listarReclutador(){
 		return reclutadorServiceImp.listarReclutadores();
 	}
 	
-	@PostMapping("/reclutadores")
+	@PostMapping("/reclutador")
 	public Reclutador guardarReclutador(@RequestBody Reclutador reclutador) {
 		return reclutadorServiceImp.guardarReclutador(reclutador);
 	}
 	
 	@GetMapping("/reclutador/{id}")
 	public Reclutador reclutadorXID(@PathVariable(name="id") Long id) {
-		Reclutador reclutador_xid = new Reclutador();
-		reclutador_xid = reclutadorServiceImp.reclutadorXID(id);
-		
-		return reclutador_xid;
+		return reclutadorServiceImp.reclutadorXID(id);
 	}
 	@PutMapping("/reclutador/{id}")
 	public Reclutador actualizarArticulo(@PathVariable(name = "id") Long id, @RequestBody Reclutador reclutador) {
@@ -52,10 +49,12 @@ public class ReclutadorController {
 		reclutador_selec.setWeb(reclutador.getWeb());
 		reclutador_selec.setUsuario(reclutador.getUsuario());
 		
-		return reclutador_selec;
+		reclutador_actu = reclutadorServiceImp.actualizarReclutador(reclutador_selec);
+		
+		return reclutador_actu;
 		
 	}
-	@DeleteMapping("/reclutadores/{id}")
+	@DeleteMapping("/reclutador/{id}")
 	public void eliminarReclutador(@PathVariable (name ="id") Long id) {
 		reclutadorServiceImp.eliminarReclutador(id);
 	}
