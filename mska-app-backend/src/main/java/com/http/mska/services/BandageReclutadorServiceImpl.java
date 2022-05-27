@@ -10,7 +10,7 @@ import com.http.mska.dto.BandageReclutador;
 
 @Service 
 
-public class BandageReclutadorServiceImpl implements BandageReclutadorService{
+public class BandageReclutadorServiceImpl implements IBandageReclutadorService{
 	
 	@Autowired
 	IBandageReclutadorDAO bandageReclutadorDAO;

@@ -10,7 +10,7 @@ import com.http.mska.dto.BandageTecnico;
 
 @Service 
 
-public class BandageTecnicoServiceImpl implements BandageTecnicoService{
+public class BandageTecnicoServiceImpl implements IBandageTecnicoService{
 	@Autowired
 	IBandageTecnicoDAO bandageTecnicoDAO;
 
