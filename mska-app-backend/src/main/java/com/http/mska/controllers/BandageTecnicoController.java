@@ -87,9 +87,11 @@ public class BandageTecnicoController {
 	}
 
 	/** Método para eliminar un bandage de Tecnico */
+
 	@DeleteMapping("/bandageTecnico/{id}")
 	public void eliminarBandageTecnico(@PathVariable(name = "codigo") Long id) {
 		bandageTecnicoServiceImpl.eliminarBandageTecnico(id);
+
 		System.out.println("Bandage de técnico eliminado con exito.");
 	}
 }

@@ -26,7 +26,7 @@ public class Valoracion {
 	private Long comentario;
 	
 	@OneToMany(mappedBy= "valoracion")
-	private Set<Comentario> comentarios;
+	private Set<ComentarioValoracion> comentarios;
 	
 	@OneToOne
 	@JoinColumn(name="fk_id_usuario")

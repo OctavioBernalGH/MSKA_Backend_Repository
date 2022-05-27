@@ -19,6 +19,7 @@ public interface IBandageTecnicoService {
 	    public void eliminarBandageTecnico(Long id);
 	    
 	    //Buscar bandage de técnico
+
 	    public BandageTecnico buscarBandageTecnico(Long id);
 
 	}

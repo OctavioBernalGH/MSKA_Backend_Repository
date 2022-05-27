@@ -30,6 +30,7 @@ import com.http.mska.services.BandageReclutadorServiceImpl;
 
 public class BandageReclutadorController {
 	
+
 	/** Se crea una instancia del tipo @BandageReclutadorServiceImpl */
 	@Autowired
 	BandageReclutadorServiceImpl bandageReclutadorServiceImpl ;
@@ -47,6 +48,7 @@ public class BandageReclutadorController {
 	}
 
 	/** Método para crear un nuevo bandage de reclutador */
+
 	@PostMapping("/bandageReclutador")
 	public BandageReclutador crearBandageReclutador(@RequestBody BandageReclutador bandageReclutador) {
 		return bandageReclutadorServiceImpl.crearBandageReclutador(bandageReclutador);
