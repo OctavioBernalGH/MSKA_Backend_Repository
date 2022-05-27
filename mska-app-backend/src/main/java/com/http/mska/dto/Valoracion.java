@@ -1,11 +1,14 @@
 package com.http.mska.dto;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -16,11 +19,14 @@ public class Valoracion {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(name = "estrellas")
 	private int estrellas =0;
 	@Column(name = "comentario")
 	private Long comentario;
+	
+	@OneToMany(mappedBy= "valoracion")
+	private Set<Comentario> comentarios;
 	
 	@OneToOne
 	@JoinColumn(name="fk_id_usuario")
