@@ -39,22 +39,21 @@ public class TecnicoController {
 		tecnicoServiceImpl.eliminarTecnico(id);
 	}
 
-	// Crear Tecnico
+	// Crear Técnico
 	@PostMapping("/tecnico")
 	public Tecnico crearPeliculas(@RequestBody Tecnico tecnico) {
 		return tecnicoServiceImpl.crearTecnico(tecnico);
 	}
 	
-	// Modificar Tecnico
+	// Modificar Técnico
 		@PutMapping("/tecnico/{id}")
 		public Tecnico modificarPiezas (@PathVariable(name="id")Long id, @RequestBody Tecnico tecnico) {
 			Tecnico tecnico_a_modificar = new Tecnico();
 			Tecnico modificado = new Tecnico();
 
-			// Busco el id de la sala que quiero cambiar
+			// Busco el ID de la sala que quiero cambiar
 			tecnico_a_modificar = tecnicoServiceImpl.buscarTecnico(id);
 
-			tecnico_a_modificar.setId(tecnico.getId());
 			tecnico_a_modificar.setExperiencia(tecnico.getExperiencia());
 			tecnico_a_modificar.setNivel(tecnico.getNivel());
 			tecnico_a_modificar.setGithub(tecnico.getGithub());
@@ -62,7 +61,8 @@ public class TecnicoController {
 			tecnico_a_modificar.setTrabajo_en_curso(tecnico.getTrabajo_en_curso());
 			tecnico_a_modificar.setTrabajos_finalizados(tecnico.getTrabajos_finalizados());
 			tecnico_a_modificar.setTipo_tecnico(tecnico.getTipo_tecnico());
-
+			tecnico_a_modificar.setUsuario(tecnico.getUsuario());
+			
 			// Modificado es = a los cambios aplicados
 			modificado = tecnicoServiceImpl.modificarTecnico(tecnico_a_modificar);
 

@@ -69,12 +69,13 @@ public class UsuarioController {
 		usuario_a_modificar.setCodigoPostal(usuario.getCodigoPostal());
 		usuario_a_modificar.setFechaRegistro(usuario.getFechaRegistro());
 		usuario_a_modificar.setFechaNacimiento(usuario.getFechaNacimiento());
+		usuario_a_modificar.setMovil(usuario.getMovil());
+		usuario_a_modificar.setInstagram(usuario.getInstagram());
+		usuario_a_modificar.setLinkedin(usuario.getLinkedin());
 		usuario_a_modificar.setNumEntrevista(usuario.getNumEntrevista());
 		usuario_a_modificar.setNumMensajes(usuario.getNumMensajes());
 		usuario_a_modificar.setNumTrabajos(usuario.getNumTrabajos());
 		usuario_a_modificar.setNumValoraciones(usuario.getNumValoraciones());
-		usuario_a_modificar.setReclutadorBol(usuario.getReclutadorBol());
-		usuario_a_modificar.setTecnicoBol(usuario.getTecnicoBol());
 		usuario_a_modificar.setUriFoto(usuario.getUriFoto());
 		usuario_a_modificar.setReclutador(usuario.getReclutador());
 		usuario_a_modificar.setTecnico(usuario.getTecnico());

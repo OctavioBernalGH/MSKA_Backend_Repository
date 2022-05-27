@@ -1,18 +1,15 @@
 package com.http.mska.dto;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * Se define la clase Usuarios como entidad y se mapea con la tabla usuarios de
@@ -79,28 +76,190 @@ public class Usuario {
 	@Column(name = "num_valoraciones")
 	private int numValoraciones;
 
-	@Column(name = "reclutador_bol")
-	private int reclutadorBol;
-
-	@Column(name = "tecnico_bol")
-	private int tecnicoBol;
-
 	@Column(name = "uri_foto")
 	private String uriFoto;
 
 	/** Relaciones OneToMany */
-	@OneToMany
-	@JoinColumn(name = "id")
-	private List<Tecnico> tecnico;
+	@ManyToOne
+	@JoinColumn(name="fk_id_tecnico")
+	private Tecnico tecnico;
+
+	@ManyToOne
+	@JoinColumn(name="fk_id_reclutador")
+	private Reclutador reclutador;
 	
-	@OneToMany
-	@JoinColumn(name = "id")
-	private List<Reclutador> reclutador;
-	
-	/** Constructores */
-	public Usuario() {}
-	
+	//Getters y setters
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getApellidos() {
+		return apellidos;
+	}
+
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getNombreUsuario() {
+		return nombreUsuario;
+	}
+
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
+	}
+
+	public String getContraseña() {
+		return contraseña;
+	}
+
+	public void setContraseña(String contraseña) {
+		this.contraseña = contraseña;
+	}
+
+	public String getPoblacion() {
+		return poblacion;
+	}
+
+	public void setPoblacion(String poblacion) {
+		this.poblacion = poblacion;
+	}
+
+	public String getPais() {
+		return pais;
+	}
+
+	public void setPais(String pais) {
+		this.pais = pais;
+	}
+
+	public String getCodigoPostal() {
+		return codigoPostal;
+	}
+
+	public void setCodigoPostal(String codigoPostal) {
+		this.codigoPostal = codigoPostal;
+	}
+
+	public Date getFechaRegistro() {
+		return fechaRegistro;
+	}
+
+	public void setFechaRegistro(Date fechaRegistro) {
+		this.fechaRegistro = fechaRegistro;
+	}
+
+	public Date getFechaNacimiento() {
+		return fechaNacimiento;
+	}
+
+	public void setFechaNacimiento(Date fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
+	}
+
+	public int getMovil() {
+		return movil;
+	}
+
+	public void setMovil(int movil) {
+		this.movil = movil;
+	}
+
+	public String getInstagram() {
+		return instagram;
+	}
+
+	public void setInstagram(String instagram) {
+		this.instagram = instagram;
+	}
+
+	public String getLinkedin() {
+		return linkedin;
+	}
+
+	public void setLinkedin(String linkedin) {
+		this.linkedin = linkedin;
+	}
+
+	public int getNumEntrevista() {
+		return numEntrevista;
+	}
+
+	public void setNumEntrevista(int numEntrevista) {
+		this.numEntrevista = numEntrevista;
+	}
+
+	public int getNumMensajes() {
+		return numMensajes;
+	}
+
+	public void setNumMensajes(int numMensajes) {
+		this.numMensajes = numMensajes;
+	}
+
+	public int getNumTrabajos() {
+		return numTrabajos;
+	}
+
+	public void setNumTrabajos(int numTrabajos) {
+		this.numTrabajos = numTrabajos;
+	}
+
+	public int getNumValoraciones() {
+		return numValoraciones;
+	}
+
+	public void setNumValoraciones(int numValoraciones) {
+		this.numValoraciones = numValoraciones;
+	}
+
+	public String getUriFoto() {
+		return uriFoto;
+	}
+
+	public void setUriFoto(String uriFoto) {
+		this.uriFoto = uriFoto;
+	}
+
+	public Tecnico getTecnico() {
+		return tecnico;
+	}
+
+	public void setTecnico(Tecnico tecnico) {
+		this.tecnico = tecnico;
+	}
+
+	public Reclutador getReclutador() {
+		return reclutador;
+	}
+
+	public void setReclutador(Reclutador reclutador) {
+		this.reclutador = reclutador;
+	}
+
 	/**
+	 * 
 	 * @param id
 	 * @param nombre
 	 * @param apellidos
@@ -119,16 +278,17 @@ public class Usuario {
 	 * @param numMensajes
 	 * @param numTrabajos
 	 * @param numValoraciones
-	 * @param reclutadorBol
-	 * @param tecnicoBol
 	 * @param uriFoto
 	 * @param tecnico
 	 * @param reclutador
 	 */
+	
+	//Constructor
+	
 	public Usuario(Long id, String nombre, String apellidos, String email, String nombreUsuario, String contraseña,
 			String poblacion, String pais, String codigoPostal, Date fechaRegistro, Date fechaNacimiento, int movil,
 			String instagram, String linkedin, int numEntrevista, int numMensajes, int numTrabajos, int numValoraciones,
-			int reclutadorBol, int tecnicoBol, String uriFoto, List<Tecnico> tecnico, List<Reclutador> reclutador) {
+			String uriFoto, Tecnico tecnico, Reclutador reclutador) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -148,340 +308,13 @@ public class Usuario {
 		this.numMensajes = numMensajes;
 		this.numTrabajos = numTrabajos;
 		this.numValoraciones = numValoraciones;
-		this.reclutadorBol = reclutadorBol;
-		this.tecnicoBol = tecnicoBol;
 		this.uriFoto = uriFoto;
 		this.tecnico = tecnico;
 		this.reclutador = reclutador;
 	}
 
-
-	/**
-	 * @return the id
-	 */
-	public Long getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	/**
-	 * @return the nombre
-	 */
-	public String getNombre() {
-		return nombre;
-	}
-
-	/**
-	 * @param nombre the nombre to set
-	 */
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	/**
-	 * @return the apellidos
-	 */
-	public String getApellidos() {
-		return apellidos;
-	}
-
-	/**
-	 * @param apellidos the apellidos to set
-	 */
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
-	}
-
-	/**
-	 * @return the email
-	 */
-	public String getEmail() {
-		return email;
-	}
-
-	/**
-	 * @param email the email to set
-	 */
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	/**
-	 * @return the nombreUsuario
-	 */
-	public String getNombreUsuario() {
-		return nombreUsuario;
-	}
-
-	/**
-	 * @param nombreUsuario the nombreUsuario to set
-	 */
-	public void setNombreUsuario(String nombreUsuario) {
-		this.nombreUsuario = nombreUsuario;
-	}
-
-	/**
-	 * @return the contraseña
-	 */
-	public String getContraseña() {
-		return contraseña;
-	}
-
-	/**
-	 * @param contraseña the contraseña to set
-	 */
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
-	}
-
-	/**
-	 * @return the poblacion
-	 */
-	public String getPoblacion() {
-		return poblacion;
-	}
-
-	/**
-	 * @param poblacion the poblacion to set
-	 */
-	public void setPoblacion(String poblacion) {
-		this.poblacion = poblacion;
-	}
-
-	/**
-	 * @return the pais
-	 */
-	public String getPais() {
-		return pais;
-	}
-
-	/**
-	 * @param pais the pais to set
-	 */
-	public void setPais(String pais) {
-		this.pais = pais;
-	}
-
-	/**
-	 * @return the codigoPostal
-	 */
-	public String getCodigoPostal() {
-		return codigoPostal;
-	}
-
-	/**
-	 * @param codigoPostal the codigoPostal to set
-	 */
-	public void setCodigoPostal(String codigoPostal) {
-		this.codigoPostal = codigoPostal;
-	}
-
-	/**
-	 * @return the fechaRegistro
-	 */
-	public Date getFechaRegistro() {
-		return fechaRegistro;
-	}
-
-	/**
-	 * @param fechaRegistro the fechaRegistro to set
-	 */
-	public void setFechaRegistro(Date fechaRegistro) {
-		this.fechaRegistro = fechaRegistro;
-	}
-
-	/**
-	 * @return the fechaNacimiento
-	 */
-	public Date getFechaNacimiento() {
-		return fechaNacimiento;
-	}
-
-	/**
-	 * @param fechaNacimiento the fechaNacimiento to set
-	 */
-	public void setFechaNacimiento(Date fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
-	}
-
-	/**
-	 * @return the movil
-	 */
-	public int getMovil() {
-		return movil;
-	}
-
-	/**
-	 * @param movil the movil to set
-	 */
-	public void setMovil(int movil) {
-		this.movil = movil;
-	}
-
-	/**
-	 * @return the instagram
-	 */
-	public String getInstagram() {
-		return instagram;
-	}
-
-	/**
-	 * @param instagram the instagram to set
-	 */
-	public void setInstagram(String instagram) {
-		this.instagram = instagram;
-	}
-
-	/**
-	 * @return the linkedin
-	 */
-	public String getLinkedin() {
-		return linkedin;
-	}
-
-	/**
-	 * @param linkedin the linkedin to set
-	 */
-	public void setLinkedin(String linkedin) {
-		this.linkedin = linkedin;
-	}
-
-	/**
-	 * @return the numEntrevista
-	 */
-	public int getNumEntrevista() {
-		return numEntrevista;
-	}
-
-	/**
-	 * @param numEntrevista the numEntrevista to set
-	 */
-	public void setNumEntrevista(int numEntrevista) {
-		this.numEntrevista = numEntrevista;
-	}
-
-	/**
-	 * @return the numMensajes
-	 */
-	public int getNumMensajes() {
-		return numMensajes;
-	}
-
-	/**
-	 * @param numMensajes the numMensajes to set
-	 */
-	public void setNumMensajes(int numMensajes) {
-		this.numMensajes = numMensajes;
-	}
-
-	/**
-	 * @return the numValoraciones
-	 */
-	public int getNumValoraciones() {
-		return numValoraciones;
-	}
-
-	/**
-	 * @param numValoraciones the numValoraciones to set
-	 */
-	public void setNumValoraciones(int numValoraciones) {
-		this.numValoraciones = numValoraciones;
-	}
-
-	/**
-	 * @return the reclutadorBol
-	 */
-	public int getReclutadorBol() {
-		return reclutadorBol;
-	}
-
-	/**
-	 * @param reclutadorBol the reclutadorBol to set
-	 */
-	public void setReclutadorBol(int reclutadorBol) {
-		this.reclutadorBol = reclutadorBol;
-	}
-
-	/**
-	 * @return the tecnicoBol
-	 */
-	public int getTecnicoBol() {
-		return tecnicoBol;
-	}
-
-	/**
-	 * @param tecnicoBol the tecnicoBol to set
-	 */
-	public void setTecnicoBol(int tecnicoBol) {
-		this.tecnicoBol = tecnicoBol;
-	}
-
-	/**
-	 * @return the uriFoto
-	 */
-	public String getUriFoto() {
-		return uriFoto;
-	}
-
-	/**
-	 * @param uriFoto the uriFoto to set
-	 */
-	public void setUriFoto(String uriFoto) {
-		this.uriFoto = uriFoto;
-	}
-
-	/**
-	 * Lista de tecnicos.
-	 * @return
-	 */
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Tecnico")
-	public List<Tecnico> getTecnico() {
-		return tecnico;
-	}
-
-	/**
-	 * Lista de tecnicos.
-	 * @return
-	 */
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Reclutador")
-	public List<Reclutador> getReclutador() {
-		return reclutador;
-	}
-
-	/**
-	 * @param tecnico the tecnico to set
-	 */
-	public void setTecnico(List<Tecnico> tecnico) {
-		this.tecnico = tecnico;
-	}
-
-	/**
-	 * @param reclutador the reclutador to set
-	 */
-	public void setReclutador(List<Reclutador> reclutador) {
-		this.reclutador = reclutador;
-	}
-
-	/**
-	 * @return the numTrabajos
-	 */
-	public int getNumTrabajos() {
-		return numTrabajos;
-	}
-
-	/**
-	 * @param numTrabajos the numTrabajos to set
-	 */
-	public void setNumTrabajos(int numTrabajos) {
-		this.numTrabajos = numTrabajos;
+	public Usuario() {
+		super();
 	}
 	
 }
