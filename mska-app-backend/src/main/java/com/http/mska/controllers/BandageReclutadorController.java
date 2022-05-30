@@ -42,9 +42,9 @@ public class BandageReclutadorController {
 	}
 	
 	/** Método para listar bandageReclutador por id */
-	@GetMapping("/bandageReclutador/id/{id}")
-	public List<BandageReclutador> listarBandageReclutador(@PathVariable(name = "id") String id) {
-		return null;
+	@GetMapping("/bandageReclutador/{id}")
+	public BandageReclutador listarBandageReclutador(@PathVariable(name = "id") Long id) {
+		return bandageReclutadorServiceImpl.buscarBandageReclutador(id);
 	}
 
 	/** Método para crear un nuevo bandage de reclutador */
@@ -52,12 +52,6 @@ public class BandageReclutadorController {
 	@PostMapping("/bandageReclutador")
 	public BandageReclutador crearBandageReclutador(@RequestBody BandageReclutador bandageReclutador) {
 		return bandageReclutadorServiceImpl.crearBandageReclutador(bandageReclutador);
-	}
-	
-	/** Método para buscar un bandage de reclutador por id */
-	@GetMapping("/bandageReclutador/{id}")
-	public BandageReclutador buscarBandageReclutadorId(@PathVariable(name = "id") Long id) {
-		return bandageReclutadorServiceImpl.buscarBandageReclutador(id);
 	}
 	
 	/** Método para actualizar un bandageReclutador */
@@ -78,7 +72,8 @@ public class BandageReclutadorController {
 	bandage_reclutador_a_actualizar.setTipo(bandageReclutador.getTipo());
 	bandage_reclutador_a_actualizar.setDescripcion(bandageReclutador.getDescripcion());
 	bandage_reclutador_a_actualizar.setCantidadExp(bandageReclutador.getCantidadExp());
-
+	bandage_reclutador_a_actualizar.setObtieneR(bandageReclutador.getObtieneR());
+	
 	actualizado = bandageReclutadorServiceImpl.modificarBandageReclutador(bandage_reclutador_a_actualizar);
 
 		return actualizado;
