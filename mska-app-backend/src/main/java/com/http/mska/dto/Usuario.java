@@ -100,6 +100,10 @@ public class Usuario {
 	@OneToMany
 	@JoinColumn(name = "id")
 	private List<Entrevista> entrevista;
+	
+	@OneToMany
+	@JoinColumn(name = "id")
+	private List<Trabajo> trabajo;
 
 	// Constructores
 	public Usuario() {
@@ -129,11 +133,13 @@ public class Usuario {
 	 * @param tecnico
 	 * @param reclutador
 	 * @param mensaje
+	 * @param trabajo
 	 */
 	public Usuario(Long id, String nombre, String apellidos, String email, String nombreUsuario, String contraseña,
 			String poblacion, String pais, String codigoPostal, Date fechaRegistro, Date fechaNacimiento, int movil,
 			String instagram, String linkedin, int numEntrevista, int numMensajes, int numTrabajos, int numValoraciones,
-			String uriFoto, Tecnico tecnico, Reclutador reclutador, List<Mensaje> mensaje, List<Entrevista> entrevista) {
+			String uriFoto, Tecnico tecnico, Reclutador reclutador, List<Mensaje> mensaje, List<Entrevista> entrevista, 
+			List<Trabajo> trabajo) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -158,6 +164,7 @@ public class Usuario {
 		this.reclutador = reclutador;
 		this.mensaje = mensaje;
 		this.entrevista = entrevista;
+		this.trabajo = trabajo;
 	}
 	
 	
@@ -468,6 +475,14 @@ public class Usuario {
 	public void setEntrevista(List<Entrevista> entrevista) {
 		this.entrevista = entrevista;
 	}
+	
+	
+	/**
+	 * @param trabajo the trabajo to set
+	 */
+	public void setTrabajo(List<Trabajo> trabajo) {
+		this.trabajo = trabajo;
+	}
 
 	/** JSONIGNORE para eliminar la recursividad ! */
 	@JsonIgnore
@@ -482,4 +497,9 @@ public class Usuario {
 		return entrevista;
 	}
 	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Trabajo")
+	public List<Trabajo> getTrabajo() {
+		return trabajo;
+	}
 }
