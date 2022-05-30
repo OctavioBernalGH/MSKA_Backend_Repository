@@ -43,12 +43,6 @@ public class BandageTecnicoController {
 		return bandageTecnicoServiceImpl.listarBandageTecnico();
 	}
 
-	/** Método para listar bandageTecnico por id */
-	@GetMapping("/bandageTecnico/id/{id}")
-	public List<BandageTecnico> listarBandageTecnico(@PathVariable(name = "id") String id) {
-		return null;
-	}
-
 	/** Método para crear un nuevo bandage de Tecnico */
 	@PostMapping("/bandageTecnico")
 	public BandageTecnico crearBandageTecnico(@RequestBody BandageTecnico bandageTecnico) {
@@ -79,7 +73,8 @@ public class BandageTecnicoController {
 		bandage_Tecnico_a_actualizar.setTipo(bandageTecnico.getTipo());
 		bandage_Tecnico_a_actualizar.setDescripcion(bandageTecnico.getDescripcion());
 		bandage_Tecnico_a_actualizar.setCantidadExp(bandageTecnico.getCantidadExp());
-	
+		bandage_Tecnico_a_actualizar.setObtieneT(bandageTecnico.getObtieneT());
+		
 		actualizado = bandageTecnicoServiceImpl.modificarBandageTecnico(bandage_Tecnico_a_actualizar);
 
 		return actualizado;
