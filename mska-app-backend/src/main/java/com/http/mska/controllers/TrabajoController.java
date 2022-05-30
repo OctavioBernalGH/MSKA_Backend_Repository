@@ -61,7 +61,8 @@ public class TrabajoController {
 		trabajo_a_modificar.setFecha_fin(trabajo.getFecha_fin());
 		trabajo_a_modificar.setEstrellas(trabajo.getEstrellas());
 		trabajo_a_modificar.setPresupuesto(trabajo.getPresupuesto());
-
+		trabajo_a_modificar.setUsuario(trabajo.getUsuario());
+		
 		// Modificado es = a los cambios aplicados
 		modificado = trabajoServiceImpl.modificarTrabajo(trabajo_a_modificar);
 

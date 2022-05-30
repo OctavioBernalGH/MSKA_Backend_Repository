@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,18 +18,23 @@ public class Trabajo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	@Column(name = "descripcion")
 	private String descripcion;
+	
 	@Column(name = "fecha_ini")
 	private Date fecha_ini;
+	
 	@Column(name = "fecha_fin")
 	private Date fecha_fin;
+	
 	@Column(name = "estrellas")
 	private int estrellas =0;
+	
 	@Column(name = "presupuesto")
 	private float presupuesto;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="fk_id_usuario")
 	private Usuario usuario;
 
@@ -107,13 +112,5 @@ public class Trabajo {
 		this.usuario = usuario;
 	}
 
-	// Creamos toString
-	@Override
-	public String toString() {
-		return "Trabajo [id=" + id + ", descripcion=" + descripcion + ", fecha_ini=" + fecha_ini + ", fecha_fin="
-				+ fecha_fin + ", estrellas=" + estrellas + ", presupuesto=" + presupuesto + ", usuario=" + usuario
-				+ "]";
-	}
-	
 	
 }
