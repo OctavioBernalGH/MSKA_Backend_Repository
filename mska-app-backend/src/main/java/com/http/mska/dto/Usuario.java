@@ -104,6 +104,10 @@ public class Usuario {
 	@OneToMany
 	@JoinColumn(name = "id")
 	private List<Trabajo> trabajo;
+	
+	@OneToMany
+	@JoinColumn(name = "id")
+	private List<ComentarioTrabajo> comentarioTrabajo;
 
 	// Constructores
 	public Usuario() {
@@ -139,7 +143,7 @@ public class Usuario {
 			String poblacion, String pais, String codigoPostal, Date fechaRegistro, Date fechaNacimiento, int movil,
 			String instagram, String linkedin, int numEntrevista, int numMensajes, int numTrabajos, int numValoraciones,
 			String uriFoto, Tecnico tecnico, Reclutador reclutador, List<Mensaje> mensaje, List<Entrevista> entrevista, 
-			List<Trabajo> trabajo) {
+			List<Trabajo> trabajo, List<ComentarioTrabajo> comentarioTrabajo) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -165,6 +169,7 @@ public class Usuario {
 		this.mensaje = mensaje;
 		this.entrevista = entrevista;
 		this.trabajo = trabajo;
+		this.comentarioTrabajo = comentarioTrabajo;
 	}
 	
 	
@@ -474,9 +479,15 @@ public class Usuario {
 	 */
 	public void setEntrevista(List<Entrevista> entrevista) {
 		this.entrevista = entrevista;
+	}		
+	
+	/**
+	 * @param comentarioTrabajo the comentarioTrabajo to set
+	 */
+	public void setComentarioTrabajo(List<ComentarioTrabajo> comentarioTrabajo) {
+		this.comentarioTrabajo = comentarioTrabajo;
 	}
-	
-	
+
 	/**
 	 * @param trabajo the trabajo to set
 	 */
@@ -501,5 +512,11 @@ public class Usuario {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Trabajo")
 	public List<Trabajo> getTrabajo() {
 		return trabajo;
+	}
+	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ComentarioTrabajo")
+	public List<ComentarioTrabajo> getComentarioTrabajo() {
+		return comentarioTrabajo;
 	}
 }

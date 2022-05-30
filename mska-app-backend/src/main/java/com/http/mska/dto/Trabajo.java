@@ -1,25 +1,32 @@
 package com.http.mska.dto;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /** Se define una entidad y se asigna una tabla */
 @Entity
 @Table(name = "trabajo")
 public class Trabajo {
 	
+	/** Se genera el identificador mediante auto incremental */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	/** Se mapean los atributos de clase con las columnas de la tabla */
 	@Column(name = "descripcion")
 	private String descripcion;
 	
@@ -35,6 +42,7 @@ public class Trabajo {
 	@Column(name = "presupuesto")
 	private float presupuesto;
 	
+	/** Se generan las relaciones con las diferentes tablas */
 	@ManyToOne
 	@JoinColumn(name="fk_id_asignador")
 	private Usuario usuarioAsignador;
@@ -42,11 +50,14 @@ public class Trabajo {
 	@ManyToOne
 	@JoinColumn(name="fk_id_asignado")
 	private Usuario usuarioAsignado;
+	
+	@OneToMany
+	@JoinColumn(name = "id")
+	private List<ComentarioTrabajo> comentarioTrabajo;
 
-
+	/** Constructor por defecto */
 	public Trabajo() {}
-	
-	
+			
 	/**
 	 * @param id
 	 * @param descripcion
@@ -56,10 +67,10 @@ public class Trabajo {
 	 * @param presupuesto
 	 * @param usuarioAsignador
 	 * @param usuarioAsignado
+	 * @param comentarioTrabajo
 	 */
-	
 	public Trabajo(Long id, String descripcion, Date fecha_ini, Date fecha_fin, int estrellas, float presupuesto,
-			Usuario usuarioAsignador, Usuario usuarioAsignado) {
+			Usuario usuarioAsignador, Usuario usuarioAsignado, List<ComentarioTrabajo> comentarioTrabajo) {
 		this.id = id;
 		this.descripcion = descripcion;
 		this.fecha_ini = fecha_ini;
@@ -68,6 +79,7 @@ public class Trabajo {
 		this.presupuesto = presupuesto;
 		this.usuarioAsignador = usuarioAsignador;
 		this.usuarioAsignado = usuarioAsignado;
+		this.comentarioTrabajo = comentarioTrabajo;
 	}
 
 	/**
@@ -182,5 +194,18 @@ public class Trabajo {
 		this.usuarioAsignado = usuarioAsignado;
 	}
 
+	/**
+	 * @param comentarioTrabajo the comentarioTrabajo to set
+	 */
+	public void setComentarioTrabajo(List<ComentarioTrabajo> comentarioTrabajo) {
+		this.comentarioTrabajo = comentarioTrabajo;
+	}
+
+	/** Se elimina la recursividad */
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ComentarioTrabajo")
+	public List<ComentarioTrabajo> getComentarioTrabajo() {
+		return comentarioTrabajo;
+	}
 	
 }
