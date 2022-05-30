@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.http.mska.dto.Trabajo;
-import com.http.mska.dto.Usuario;
 import com.http.mska.services.TrabajoServiceImpl;
 
 @RestController
@@ -64,6 +62,7 @@ public class TrabajoController {
 		trabajo_a_modificar.setPresupuesto(trabajo.getPresupuesto());
 		trabajo_a_modificar.setUsuarioAsignador(trabajo.getUsuarioAsignador());
 		trabajo_a_modificar.setUsuarioAsignado(trabajo.getUsuarioAsignado());
+		trabajo_a_modificar.setComentarioTrabajo(trabajo.getComentarioTrabajo());
 		
 		// Modificado es = a los cambios aplicados
 		modificado = trabajoServiceImpl.modificarTrabajo(trabajo_a_modificar);
