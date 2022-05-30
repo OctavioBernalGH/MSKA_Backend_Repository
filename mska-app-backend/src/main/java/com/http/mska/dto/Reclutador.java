@@ -15,7 +15,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -28,31 +27,59 @@ public class Reclutador {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	@Column(name = "experiencia")
 	private int experiencia = 0;
+	
 	@Column(name = "nivel")
 	private int nivel = 1;
+	
 	@Column(name = "web")
 	private String web="";
+	
 	@Column(name = "tipo_reclutador")
 	private String tipoReclutador="";
-
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Usuario")
-	public List<Usuario> getUsuario() {
-		return usuario;
-	}
 
 	@OneToMany
 	@JoinColumn(name = "id")
 	private List<Usuario> usuario;
+	
+	@OneToMany
+	@JoinColumn(name = "id")
+	private List<ObtieneR> obtieneR;
 
+
+	/** Constructor por defecto */
+	public Reclutador() {}
+	
+	
+	/**
+	 * @param id
+	 * @param experiencia
+	 * @param nivel
+	 * @param web
+	 * @param tipoReclutador
+	 * @param usuario
+	 * @param obtieneR
+	 */
+	public Reclutador(Long id, int experiencia, int nivel, String web, String tipoReclutador, List<Usuario> usuario,
+			List<ObtieneR> obtieneR) {
+		this.id = id;
+		this.experiencia = experiencia;
+		this.nivel = nivel;
+		this.web = web;
+		this.tipoReclutador = tipoReclutador;
+		this.usuario = usuario;
+		this.obtieneR = obtieneR;
+	}
+	
 	/**
 	 * @return the id
 	 */
 	public Long getId() {
 		return id;
 	}
+
 
 	/**
 	 * @param id the id to set
@@ -61,12 +88,14 @@ public class Reclutador {
 		this.id = id;
 	}
 
+
 	/**
 	 * @return the experiencia
 	 */
 	public int getExperiencia() {
 		return experiencia;
 	}
+
 
 	/**
 	 * @param experiencia the experiencia to set
@@ -75,12 +104,14 @@ public class Reclutador {
 		this.experiencia = experiencia;
 	}
 
+
 	/**
 	 * @return the nivel
 	 */
 	public int getNivel() {
 		return nivel;
 	}
+
 
 	/**
 	 * @param nivel the nivel to set
@@ -89,12 +120,14 @@ public class Reclutador {
 		this.nivel = nivel;
 	}
 
+
 	/**
 	 * @return the web
 	 */
 	public String getWeb() {
 		return web;
 	}
+
 
 	/**
 	 * @param web the web to set
@@ -103,12 +136,14 @@ public class Reclutador {
 		this.web = web;
 	}
 
+
 	/**
 	 * @return the tipoReclutador
 	 */
 	public String getTipoReclutador() {
 		return tipoReclutador;
 	}
+
 
 	/**
 	 * @param tipoReclutador the tipoReclutador to set
@@ -117,6 +152,7 @@ public class Reclutador {
 		this.tipoReclutador = tipoReclutador;
 	}
 
+
 	/**
 	 * @param usuario the usuario to set
 	 */
@@ -124,32 +160,26 @@ public class Reclutador {
 		this.usuario = usuario;
 	}
 
-	/**
-	 * @param id
-	 * @param experiencia
-	 * @param nivel
-	 * @param web
-	 * @param tipoReclutador
-	 * @param usuario
-	 */
-	public Reclutador(Long id, int experiencia, int nivel, String web, String tipoReclutador, List<Usuario> usuario) {
-		super();
-		this.id = id;
-		this.experiencia = experiencia;
-		this.nivel = nivel;
-		this.web = web;
-		this.tipoReclutador = tipoReclutador;
-		this.usuario = usuario;
-	}
 
 	/**
-	 * Constructor vacío
+	 * @param obtieneR the obtieneR to set
 	 */
-	public Reclutador() {
-		super();
+	public void setObtieneR(List<ObtieneR> obtieneR) {
+		this.obtieneR = obtieneR;
+	}
+
+
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Usuario")
+	public List<Usuario> getUsuario() {
+		return usuario;
 	}
 	
-	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ObtieneR")
+	public List<ObtieneR> getObtieneR() {
+		return obtieneR;
+	}
 
-	
+
 }

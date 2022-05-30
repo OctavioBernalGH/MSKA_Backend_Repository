@@ -36,6 +36,7 @@ public class ReclutadorController {
 	public Reclutador reclutadorXID(@PathVariable(name="id") Long id) {
 		return reclutadorServiceImp.reclutadorXID(id);
 	}
+	
 	@PutMapping("/reclutador/{id}")
 	public Reclutador actualizarArticulo(@PathVariable(name = "id") Long id, @RequestBody Reclutador reclutador) {
 		Reclutador reclutador_selec = new Reclutador();
@@ -48,6 +49,7 @@ public class ReclutadorController {
 		reclutador_selec.setTipoReclutador(reclutador.getTipoReclutador());
 		reclutador_selec.setWeb(reclutador.getWeb());
 		reclutador_selec.setUsuario(reclutador.getUsuario());
+		reclutador_selec.setObtieneR(reclutador.getObtieneR());
 		
 		reclutador_actu = reclutadorServiceImp.actualizarReclutador(reclutador_selec);
 		
