@@ -67,7 +67,6 @@ public class BandageReclutadorController {
 	bandage_reclutador_a_actualizar = bandageReclutadorServiceImpl.buscarBandageReclutador(id);
 		
 	/** Se actualizan los valores */
-	bandage_reclutador_a_actualizar.setId(bandageReclutador.getId());
 	bandage_reclutador_a_actualizar.setNombre(bandageReclutador.getNombre());
 	bandage_reclutador_a_actualizar.setTipo(bandageReclutador.getTipo());
 	bandage_reclutador_a_actualizar.setDescripcion(bandageReclutador.getDescripcion());
