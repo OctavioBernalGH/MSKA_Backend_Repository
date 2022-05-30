@@ -62,6 +62,7 @@ public class TecnicoController {
 			tecnico_a_modificar.setTrabajos_finalizados(tecnico.getTrabajos_finalizados());
 			tecnico_a_modificar.setTipo_tecnico(tecnico.getTipo_tecnico());
 			tecnico_a_modificar.setUsuario(tecnico.getUsuario());
+			tecnico_a_modificar.setObtieneT(tecnico.getObtieneT());
 			
 			// Modificado es = a los cambios aplicados
 			modificado = tecnicoServiceImpl.modificarTecnico(tecnico_a_modificar);
