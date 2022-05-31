@@ -9,6 +9,9 @@ formato date time aceptado
 'AAAA-MM-DD HH: MM: SS' 
 */
 
+-- Se elimina la verificación de foreign keys --
+-- SET FOREIGN_KEY_CHECKS = 1; 
+
 DROP TABLE IF EXISTS  reclutador, tecnico, usuario, valoracion, comentario_valoracion, 
 entrevista, mensaje, trabajo, asigna, comentario_trabajo ,bandage_reclutador, obtiene_r,
 post_usuario, bandage_tecnico, obtiene_t, skill, posee, examen;
@@ -310,8 +313,10 @@ con las columnas definidas en el modelo relacional.
 */
 CREATE TABLE posee
 (
+	id int auto_increment,
 	fk_id_skill int,
     fk_id_trabajo int,
+    primary key(id),
     foreign key (fk_id_skill) references skill(id)
     on update cascade on delete cascade,
     foreign key (fk_id_trabajo) references trabajo(id)
