@@ -54,6 +54,10 @@ public class Trabajo {
 	@OneToMany
 	@JoinColumn(name = "id")
 	private List<ComentarioTrabajo> comentarioTrabajo;
+	
+	@OneToMany
+	@JoinColumn(name = "id")
+	private List<Posee> posee;
 
 	/** Constructor por defecto */
 	public Trabajo() {}
@@ -70,7 +74,7 @@ public class Trabajo {
 	 * @param comentarioTrabajo
 	 */
 	public Trabajo(Long id, String descripcion, Date fecha_ini, Date fecha_fin, int estrellas, float presupuesto,
-			Usuario usuarioAsignador, Usuario usuarioAsignado, List<ComentarioTrabajo> comentarioTrabajo) {
+			Usuario usuarioAsignador, Usuario usuarioAsignado, List<ComentarioTrabajo> comentarioTrabajo, List<Posee> posee) {
 		this.id = id;
 		this.descripcion = descripcion;
 		this.fecha_ini = fecha_ini;
@@ -80,6 +84,7 @@ public class Trabajo {
 		this.usuarioAsignador = usuarioAsignador;
 		this.usuarioAsignado = usuarioAsignado;
 		this.comentarioTrabajo = comentarioTrabajo;
+		this.posee = posee;
 	}
 
 	/**
@@ -200,12 +205,25 @@ public class Trabajo {
 	public void setComentarioTrabajo(List<ComentarioTrabajo> comentarioTrabajo) {
 		this.comentarioTrabajo = comentarioTrabajo;
 	}
+		
+	/**
+	 * @param posee the posee to set
+	 */
+	public void setPosee(List<Posee> posee) {
+		this.posee = posee;
+	}
 
 	/** Se elimina la recursividad */
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ComentarioTrabajo")
 	public List<ComentarioTrabajo> getComentarioTrabajo() {
 		return comentarioTrabajo;
+	}
+	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Posee")
+	public List<Posee> getPosee() {
+		return posee;
 	}
 	
 }

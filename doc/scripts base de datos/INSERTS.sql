@@ -222,3 +222,41 @@ insert into post_usuario(fk_id_usuario, retwit, likes, fecha_post, link, uri_fot
 values (1, 100, 200, current_timestamp(), 'www.linkfalso....', 'uri foto1');
 insert into post_usuario(fk_id_usuario, retwit, likes, fecha_post, link, uri_foto)
 values (11, 100, 200, current_timestamp(), 'www.linkfalso....', 'uri foto1');
+
+
+
+
+
+/*
+============================
+	14. INSERTAR SKILLS
+============================
+*/
+insert into skill (tipo, validado, descripcion, cantidad_exp)
+values ('Skill Test 1', 1, ' testeo de skills 1', 5);
+insert into skill (tipo, validado, descripcion, cantidad_exp)
+values ('Skill Test 2', 1, ' testeo de skills 2', 10);
+insert into skill (tipo, validado, descripcion, cantidad_exp)
+values ('Skill Test 3', 0, ' testeo de skills 3', 15);
+insert into skill (tipo, validado, descripcion, cantidad_exp)
+values ('Skill Test 4', 0, ' testeo de skills 4', 20);
+insert into skill (tipo, validado, descripcion, cantidad_exp)
+values ('Skill Test 5', 0, ' testeo de skills 5', 25);
+
+
+
+
+
+/*
+============================
+	15. INSERTAR POSEE
+============================
+*/
+insert into posee(fk_id_skill, fk_id_trabajo)
+values(1,1);
+insert into posee(fk_id_skill, fk_id_trabajo)
+values(11,11);
+insert into posee(fk_id_skill, fk_id_trabajo)
+values(21,21);
+
+select * from posee;
