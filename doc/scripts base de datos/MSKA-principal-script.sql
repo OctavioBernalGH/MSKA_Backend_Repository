@@ -9,10 +9,9 @@ formato date time aceptado
 'AAAA-MM-DD HH: MM: SS' 
 */
 
-DROP TABLE IF EXISTS usuario, reclutador, tecnico, valoracion, comentario_valoracion, 
+DROP TABLE IF EXISTS  reclutador, tecnico, usuario, valoracion, comentario_valoracion, 
 entrevista, mensaje, trabajo, asigna, comentario_trabajo ,bandage_reclutador, obtiene_r,
 post_usuario, bandage_tecnico, obtiene_t, skill, posee, examen;
-
 
 /*
 Script utilizado para la creación de la tabla RECLUTADOR
