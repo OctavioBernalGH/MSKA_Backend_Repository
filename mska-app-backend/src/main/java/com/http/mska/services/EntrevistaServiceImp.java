@@ -45,5 +45,6 @@ public class EntrevistaServiceImp implements IEntrevistaService {
 	//Eliminar una entrevista
 	@Override
 	public void eliminarEntrevista(Long id) {
+		iEntrevistaDAO.deleteById(id);
 	}
 }
