@@ -146,13 +146,6 @@ public class Skill {
 	}
 		
 	/**
-	 * @return the examen
-	 */
-	public List<Examen> getExamen() {
-		return examen;
-	}
-
-	/**
 	 * @param examen the examen to set
 	 */
 	public void setExamen(List<Examen> examen) {
@@ -169,7 +162,7 @@ public class Skill {
 	/** Se elimina la recursividad */
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Examen")
-	public List<Examen> getExamens() {
+	public List<Examen> getExamen() {
 		return examen;
 	}
 }

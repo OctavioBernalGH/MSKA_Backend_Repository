@@ -12,16 +12,20 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "examen")
 public class Examen {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@Column(name="nombre")
 	private String nombre;
+	
 	@Column(name="tipo")
 	private String tipo;
+	
 	@Column(name= "descripcion")
 	private String descripcion;
+	
 	@Column(name= "cantidad_exp")
 	private int cantidadExp;
 	
