@@ -59,6 +59,7 @@ public class SkillController {
 		old_objetc.setDescripcion(skill.getDescripcion());
 		old_objetc.setCantidad_exp(skill.getCantidad_exp());
 		old_objetc.setPosee(skill.getPosee());
+		old_objetc.setExamen(skill.getExamen());
 		
 		/** Se vuelcan los nuevos datos al otro objeto */
 		new_object = skillServiceImp.modificarSkill(old_objetc);
