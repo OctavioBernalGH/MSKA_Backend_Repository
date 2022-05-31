@@ -259,4 +259,17 @@ values(11,11);
 insert into posee(fk_id_skill, fk_id_trabajo)
 values(21,21);
 
-select * from posee;
+
+
+
+/*
+============================
+	16. INSERTAR EXAMEN
+============================
+*/
+insert into examen (fk_id_skill, nombre, tipo, descripcion, cantidad_exp)
+values (1, 'Examen java', 'Tipo 1', 'Descripción 1', 5);
+insert into examen (fk_id_skill, nombre, tipo, descripcion, cantidad_exp)
+values (11, 'Examen python', 'Tipo 2', 'Descripción 2', 15);
+insert into examen (fk_id_skill, nombre, tipo, descripcion, cantidad_exp)
+values (21, 'Examen angular', 'Tipo 3', 'Descripción 3', 35);
