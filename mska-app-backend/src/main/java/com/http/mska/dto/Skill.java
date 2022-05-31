@@ -42,6 +42,10 @@ public class Skill {
 	@JoinColumn(name = "id")
 	private List<Posee> posee;
 	
+	@OneToMany
+	@JoinColumn(name="id")
+	private List<Examen> examen;
+	
 	/** Constructor por defecto */
 	public Skill() {
 		super();
@@ -54,13 +58,14 @@ public class Skill {
 	 * @param cantidad_exp
 	 * @param posee
 	 */
-	public Skill(Long id, String tipo, boolean validado, String descripcion, int cantidad_exp, List<Posee> posee) {
+	public Skill(Long id, String tipo, boolean validado, String descripcion, int cantidad_exp, List<Posee> posee, List<Examen> examen) {
 		this.id = id;
 		this.tipo = tipo;
 		this.validado = validado;
 		this.descripcion = descripcion;
 		this.cantidad_exp = cantidad_exp;
 		this.posee = posee;
+		this.examen = examen;
 	}
 
 	/**
@@ -139,7 +144,21 @@ public class Skill {
 	public void setPosee(List<Posee> posee) {
 		this.posee = posee;
 	}
-	
+		
+	/**
+	 * @return the examen
+	 */
+	public List<Examen> getExamen() {
+		return examen;
+	}
+
+	/**
+	 * @param examen the examen to set
+	 */
+	public void setExamen(List<Examen> examen) {
+		this.examen = examen;
+	}
+
 	/** Se elimina la recursividad */
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Posee")
@@ -147,5 +166,10 @@ public class Skill {
 		return posee;
 	}
 
-	
+	/** Se elimina la recursividad */
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Examen")
+	public List<Examen> getExamens() {
+		return examen;
+	}
 }
