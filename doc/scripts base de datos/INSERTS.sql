@@ -273,3 +273,4 @@ insert into examen (fk_id_skill, nombre, tipo, descripcion, cantidad_exp)
 values (11, 'Examen python', 'Tipo 2', 'Descripción 2', 15);
 insert into examen (fk_id_skill, nombre, tipo, descripcion, cantidad_exp)
 values (21, 'Examen angular', 'Tipo 3', 'Descripción 3', 35);
+
