@@ -21,40 +21,39 @@ public class TecnicoController {
 	@Autowired
 	TecnicoServiceImpl tecnicoServiceImpl;
 
-	// Listar todos los tecnicos
+	// Listar todos los Tecnico
 	@GetMapping("/tecnico")
 	public List<Tecnico> listarPiezas(){
 		return tecnicoServiceImpl.listarTecnico();
 	}
 
-	// Buscar las piezas por id
+	// Buscar las Tecnico por id
 	@GetMapping("/tecnico/{id}")
 	public Tecnico buscarPiezaCodigo(@PathVariable(name= "id")Long id) {
 		return tecnicoServiceImpl.buscarTecnico(id);		
 	}
 
-	// Eliminar una piezas
+	// Eliminar una Tecnico
 	@DeleteMapping("/tecnico/{id}")
 	public void eliminarPiezas(@PathVariable(name="id")Long id) {
 		tecnicoServiceImpl.eliminarTecnico(id);
 	}
 
-	// Crear piezas
+	// Crear Técnico
 	@PostMapping("/tecnico")
 	public Tecnico crearPeliculas(@RequestBody Tecnico tecnico) {
 		return tecnicoServiceImpl.crearTecnico(tecnico);
 	}
 	
-	// Modificar sala
+	// Modificar Técnico
 		@PutMapping("/tecnico/{id}")
 		public Tecnico modificarPiezas (@PathVariable(name="id")Long id, @RequestBody Tecnico tecnico) {
 			Tecnico tecnico_a_modificar = new Tecnico();
 			Tecnico modificado = new Tecnico();
 
-			// Busco el id de la sala que quiero cambiar
+			// Busco el ID de la sala que quiero cambiar
 			tecnico_a_modificar = tecnicoServiceImpl.buscarTecnico(id);
 
-			tecnico_a_modificar.setId(tecnico.getId());
 			tecnico_a_modificar.setExperiencia(tecnico.getExperiencia());
 			tecnico_a_modificar.setNivel(tecnico.getNivel());
 			tecnico_a_modificar.setGithub(tecnico.getGithub());
@@ -62,7 +61,9 @@ public class TecnicoController {
 			tecnico_a_modificar.setTrabajo_en_curso(tecnico.getTrabajo_en_curso());
 			tecnico_a_modificar.setTrabajos_finalizados(tecnico.getTrabajos_finalizados());
 			tecnico_a_modificar.setTipo_tecnico(tecnico.getTipo_tecnico());
-
+			tecnico_a_modificar.setUsuario(tecnico.getUsuario());
+			tecnico_a_modificar.setObtieneT(tecnico.getObtieneT());
+			
 			// Modificado es = a los cambios aplicados
 			modificado = tecnicoServiceImpl.modificarTecnico(tecnico_a_modificar);
 

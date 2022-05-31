@@ -1,21 +1,27 @@
 package com.http.mska.dto;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * Se define la clase Usuarios como entidad y se mapea con la tabla usuarios de
  * la base de datos
  */
 @Entity
-@Table(name = "usuarios")
+@Table(name = "usuario")
 public class Usuario {
 
 	/** Se genera el ID de forma auto incremental en la base de datos */
@@ -75,25 +81,43 @@ public class Usuario {
 	@Column(name = "num_valoraciones")
 	private int numValoraciones;
 
-	@Column(name = "reclutador_bol")
-	private boolean reclutadorBol;
-
-	@Column(name = "tecnico_bol")
-	private boolean tecnicoBol;
-
 	@Column(name = "uri_foto")
 	private String uriFoto;
 
-	/** Relaciones OneToOne */
-	@OneToOne(mappedBy = "usuario")
+	/** RELACIONES CON OTRAS TABLAS */
+	@ManyToOne
+	@JoinColumn(name="fk_id_tecnico")
 	private Tecnico tecnico;
-	
-	@OneToOne(mappedBy = "usuario")
+
+	@ManyToOne
+	@JoinColumn(name="fk_id_reclutador")
 	private Reclutador reclutador;
 	
-	/** Constructores */
-	public Usuario() {}
+	@OneToMany
+	@JoinColumn(name = "id")
+	private List<Mensaje> mensaje;
 	
+	@OneToMany
+	@JoinColumn(name = "id")
+	private List<Entrevista> entrevista;
+	
+	@OneToMany
+	@JoinColumn(name = "id")
+	private List<Trabajo> trabajo;
+	
+	@OneToMany
+	@JoinColumn(name = "id")
+	private List<ComentarioTrabajo> comentarioTrabajo;
+	
+	@OneToMany
+	@JoinColumn(name = "id")
+	private List<PostUsuario> postUsuario;
+
+	// Constructores
+	public Usuario() {
+		super();
+	}
+
 	/**
 	 * @param id
 	 * @param nombre
@@ -113,16 +137,17 @@ public class Usuario {
 	 * @param numMensajes
 	 * @param numTrabajos
 	 * @param numValoraciones
-	 * @param reclutadorBol
-	 * @param tecnicoBol
 	 * @param uriFoto
 	 * @param tecnico
 	 * @param reclutador
+	 * @param mensaje
+	 * @param trabajo
 	 */
 	public Usuario(Long id, String nombre, String apellidos, String email, String nombreUsuario, String contraseña,
 			String poblacion, String pais, String codigoPostal, Date fechaRegistro, Date fechaNacimiento, int movil,
 			String instagram, String linkedin, int numEntrevista, int numMensajes, int numTrabajos, int numValoraciones,
-			boolean reclutadorBol, boolean tecnicoBol, String uriFoto, Tecnico tecnico, Reclutador reclutador) {
+			String uriFoto, Tecnico tecnico, Reclutador reclutador, List<Mensaje> mensaje, List<Entrevista> entrevista, 
+			List<Trabajo> trabajo, List<ComentarioTrabajo> comentarioTrabajo, List<PostUsuario> postUsuario) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -142,14 +167,17 @@ public class Usuario {
 		this.numMensajes = numMensajes;
 		this.numTrabajos = numTrabajos;
 		this.numValoraciones = numValoraciones;
-		this.reclutadorBol = reclutadorBol;
-		this.tecnicoBol = tecnicoBol;
 		this.uriFoto = uriFoto;
 		this.tecnico = tecnico;
 		this.reclutador = reclutador;
+		this.mensaje = mensaje;
+		this.entrevista = entrevista;
+		this.trabajo = trabajo;
+		this.comentarioTrabajo = comentarioTrabajo;
+		this.postUsuario = postUsuario;
 	}
-
-
+	
+	
 	/**
 	 * @return the id
 	 */
@@ -375,6 +403,20 @@ public class Usuario {
 	}
 
 	/**
+	 * @return the numTrabajos
+	 */
+	public int getNumTrabajos() {
+		return numTrabajos;
+	}
+
+	/**
+	 * @param numTrabajos the numTrabajos to set
+	 */
+	public void setNumTrabajos(int numTrabajos) {
+		this.numTrabajos = numTrabajos;
+	}
+
+	/**
 	 * @return the numValoraciones
 	 */
 	public int getNumValoraciones() {
@@ -386,34 +428,6 @@ public class Usuario {
 	 */
 	public void setNumValoraciones(int numValoraciones) {
 		this.numValoraciones = numValoraciones;
-	}
-
-	/**
-	 * @return the reclutadorBol
-	 */
-	public boolean isReclutadorBol() {
-		return reclutadorBol;
-	}
-
-	/**
-	 * @param reclutadorBol the reclutadorBol to set
-	 */
-	public void setReclutadorBol(boolean reclutadorBol) {
-		this.reclutadorBol = reclutadorBol;
-	}
-
-	/**
-	 * @return the tecnicoBol
-	 */
-	public boolean isTecnicoBol() {
-		return tecnicoBol;
-	}
-
-	/**
-	 * @param tecnicoBol the tecnicoBol to set
-	 */
-	public void setTecnicoBol(boolean tecnicoBol) {
-		this.tecnicoBol = tecnicoBol;
 	}
 
 	/**
@@ -459,17 +473,68 @@ public class Usuario {
 	}
 
 	/**
-	 * @return the numTrabajos
+	 * @param mensaje the mensaje to set
 	 */
-	public int getNumTrabajos() {
-		return numTrabajos;
+	public void setMensaje(List<Mensaje> mensaje) {
+		this.mensaje = mensaje;
 	}
 
 	/**
-	 * @param numTrabajos the numTrabajos to set
+	 * @param entrevista the entrevista to set
 	 */
-	public void setNumTrabajos(int numTrabajos) {
-		this.numTrabajos = numTrabajos;
+	public void setEntrevista(List<Entrevista> entrevista) {
+		this.entrevista = entrevista;
+	}		
+	
+	/**
+	 * @param comentarioTrabajo the comentarioTrabajo to set
+	 */
+	public void setComentarioTrabajo(List<ComentarioTrabajo> comentarioTrabajo) {
+		this.comentarioTrabajo = comentarioTrabajo;
+	}
+
+	/**
+	 * @param trabajo the trabajo to set
+	 */
+	public void setTrabajo(List<Trabajo> trabajo) {
+		this.trabajo = trabajo;
 	}
 	
+	/**
+	 * @param postUsuario the postUsuario to set
+	 */
+	public void setPostUsuario(List<PostUsuario> postUsuario) {
+		this.postUsuario = postUsuario;
+	}
+
+	/** JSONIGNORE para eliminar la recursividad ! */
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Mensaje")
+	public List<Mensaje> getMensaje() {
+		return mensaje;
+	}
+
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Entrevista")
+	public List<Entrevista> getEntrevista() {
+		return entrevista;
+	}
+	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Trabajo")
+	public List<Trabajo> getTrabajo() {
+		return trabajo;
+	}
+	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ComentarioTrabajo")
+	public List<ComentarioTrabajo> getComentarioTrabajo() {
+		return comentarioTrabajo;
+	}
+	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "PostUsuario")
+	public List<PostUsuario> getPostUsuario() {
+		return postUsuario;
+	}
 }

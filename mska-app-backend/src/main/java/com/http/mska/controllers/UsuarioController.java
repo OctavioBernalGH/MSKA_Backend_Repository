@@ -2,6 +2,7 @@ package com.http.mska.controllers;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -58,7 +59,6 @@ public class UsuarioController {
 		usuario_a_modificar = usuarioServiceImp.buscarUsuarioXIdentificador(id);
 		
 		// Se modifican los atributos del usuario.
-		usuario_a_modificar.setId(usuario.getId());
 		usuario_a_modificar.setNombre(usuario.getNombre());
 		usuario_a_modificar.setApellidos(usuario.getApellidos());
 		usuario_a_modificar.setEmail(usuario.getEmail());
@@ -69,15 +69,21 @@ public class UsuarioController {
 		usuario_a_modificar.setCodigoPostal(usuario.getCodigoPostal());
 		usuario_a_modificar.setFechaRegistro(usuario.getFechaRegistro());
 		usuario_a_modificar.setFechaNacimiento(usuario.getFechaNacimiento());
+		usuario_a_modificar.setMovil(usuario.getMovil());
+		usuario_a_modificar.setInstagram(usuario.getInstagram());
+		usuario_a_modificar.setLinkedin(usuario.getLinkedin());
 		usuario_a_modificar.setNumEntrevista(usuario.getNumEntrevista());
 		usuario_a_modificar.setNumMensajes(usuario.getNumMensajes());
 		usuario_a_modificar.setNumTrabajos(usuario.getNumTrabajos());
 		usuario_a_modificar.setNumValoraciones(usuario.getNumValoraciones());
-		usuario_a_modificar.setReclutadorBol(usuario.isReclutadorBol());
-		usuario_a_modificar.setTecnicoBol(usuario.isTecnicoBol());
 		usuario_a_modificar.setUriFoto(usuario.getUriFoto());
 		usuario_a_modificar.setReclutador(usuario.getReclutador());
 		usuario_a_modificar.setTecnico(usuario.getTecnico());
+		usuario_a_modificar.setMensaje(usuario.getMensaje());
+		usuario_a_modificar.setEntrevista(usuario.getEntrevista());
+		usuario_a_modificar.setTrabajo(usuario.getTrabajo());
+		usuario_a_modificar.setComentarioTrabajo(usuario.getComentarioTrabajo());
+		usuario_a_modificar.setPostUsuario(usuario.getPostUsuario());
 		
 		// Se vuelcan los nuevos datos a la segunda instancia.
 		modificado = usuarioServiceImp.modificarUsuario(usuario_a_modificar);
@@ -85,5 +91,11 @@ public class UsuarioController {
 		// Se devuelven los nuevos datos actualizados.
 		return modificado;
 		
+	}
+	
+	@DeleteMapping("/usuario/{id}")
+	public void eliminarUsuario(@PathVariable(name="id") Long id) {
+		usuarioServiceImp.eliminarUsuario(id);
+		// Se elimina un usuario mediante el identificador.
 	}
 }

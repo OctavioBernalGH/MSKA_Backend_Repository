@@ -4,48 +4,75 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
+/** Se define la clase como entidad y se vincula a la tabla tecnico */
 @Entity
-@Table(name="tecnico")
+@Table(name = "tecnico")
 public class Tecnico {
+	
+	/** Se genera el identificador como auto incremental */
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)//busca ultimo valor y lo incrementa
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // busca ultimo valor y lo incrementa
 	private Long id;
-	@Column(name="experiencia")
+	
+	/** Se mapean los atributos de clase con columnas de la tabla */
+	@Column(name = "experiencia")
 	private int experiencia;
-	@Column(name="nivel")
+	
+	@Column(name = "nivel")
 	private int nivel;
-	@Column(name="github")
+	
+	@Column(name = "github")
 	private String github;
-	@Column(name="pinterest")
+	
+	@Column(name = "pinterest")
 	private String pinterest;
-	@Column(name="trabajo_en_curso")
+	
+	@Column(name = "trabajo_en_curso")
 	private int trabajo_en_curso;
-	@Column(name="trabajos_finalizados")
+	
+	@Column(name = "trabajos_finalizados")
 	private int trabajos_finalizados;
-	@Column(name="tipo_tecnico")
+	
+	@Column(name = "tipo_tecnico")
 	private String tipo_tecnico;
 
-	// Un tecnico tiene un id de usuario
-	@OneToOne
-	@JoinColumn(name="fk_id_usuario")
-	private Usuario usuario;
-
-	// Se crea el constructor vacio
-	public Tecnico() {
-
-	}
-
-	// Se crea el constructor lleno
+	/** Relaciones de uno a mucho con la tabla usuario y obtieneT */
+	@OneToMany
+	@JoinColumn(name = "id")
+	private List<Usuario> usuario;
+	
+	@OneToMany
+	@JoinColumn(name = "id")
+	private List<ObtieneT> obtieneT;
+	
+	/** Constructor por defecto */
+	public Tecnico() {}
+			
+	/**
+	 * @param id
+	 * @param experiencia
+	 * @param nivel
+	 * @param github
+	 * @param pinterest
+	 * @param trabajo_en_curso
+	 * @param trabajos_finalizados
+	 * @param tipo_tecnico
+	 * @param usuario
+	 * @param obtieneT
+	 */
 	public Tecnico(Long id, int experiencia, int nivel, String github, String pinterest, int trabajo_en_curso,
-			int trabajos_finalizados, String tipo_tecnico, Usuario usuario) {
+			int trabajos_finalizados, String tipo_tecnico, List<Usuario> usuario, List<ObtieneT> obtieneT) {
 		this.id = id;
 		this.experiencia = experiencia;
 		this.nivel = nivel;
@@ -55,86 +82,146 @@ public class Tecnico {
 		this.trabajos_finalizados = trabajos_finalizados;
 		this.tipo_tecnico = tipo_tecnico;
 		this.usuario = usuario;
+		this.obtieneT = obtieneT;
 	}
 
-	// Se crean los getters y setters
+	/**
+	 * @return the id
+	 */
 	public Long getId() {
 		return id;
 	}
 
+	/**
+	 * @param id the id to set
+	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
 
+	/**
+	 * @return the experiencia
+	 */
 	public int getExperiencia() {
 		return experiencia;
 	}
 
+	/**
+	 * @param experiencia the experiencia to set
+	 */
 	public void setExperiencia(int experiencia) {
 		this.experiencia = experiencia;
 	}
 
+	/**
+	 * @return the nivel
+	 */
 	public int getNivel() {
 		return nivel;
 	}
 
+	/**
+	 * @param nivel the nivel to set
+	 */
 	public void setNivel(int nivel) {
 		this.nivel = nivel;
 	}
 
+	/**
+	 * @return the github
+	 */
 	public String getGithub() {
 		return github;
 	}
 
+	/**
+	 * @param github the github to set
+	 */
 	public void setGithub(String github) {
 		this.github = github;
 	}
 
+	/**
+	 * @return the pinterest
+	 */
 	public String getPinterest() {
 		return pinterest;
 	}
 
+	/**
+	 * @param pinterest the pinterest to set
+	 */
 	public void setPinterest(String pinterest) {
 		this.pinterest = pinterest;
 	}
 
+	/**
+	 * @return the trabajo_en_curso
+	 */
 	public int getTrabajo_en_curso() {
 		return trabajo_en_curso;
 	}
 
+	/**
+	 * @param trabajo_en_curso the trabajo_en_curso to set
+	 */
 	public void setTrabajo_en_curso(int trabajo_en_curso) {
 		this.trabajo_en_curso = trabajo_en_curso;
 	}
 
+	/**
+	 * @return the trabajos_finalizados
+	 */
 	public int getTrabajos_finalizados() {
 		return trabajos_finalizados;
 	}
 
+	/**
+	 * @param trabajos_finalizados the trabajos_finalizados to set
+	 */
 	public void setTrabajos_finalizados(int trabajos_finalizados) {
 		this.trabajos_finalizados = trabajos_finalizados;
 	}
 
+	/**
+	 * @return the tipo_tecnico
+	 */
 	public String getTipo_tecnico() {
 		return tipo_tecnico;
 	}
 
+	/**
+	 * @param tipo_tecnico the tipo_tecnico to set
+	 */
 	public void setTipo_tecnico(String tipo_tecnico) {
 		this.tipo_tecnico = tipo_tecnico;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
+	/**
+	 * @param usuario the usuario to set
+	 */
+	public void setUsuario(List<Usuario> usuario) {
 		this.usuario = usuario;
 	}
 
-	// Creacion del toString
-	@Override
-	public String toString() {
-		return "Tecnico [id=" + id + ", experiencia=" + experiencia + ", nivel=" + nivel + ", github=" + github
-				+ ", pinterest=" + pinterest + ", trabajo_en_curso=" + trabajo_en_curso + ", trabajos_finalizados="
-				+ trabajos_finalizados + ", tipo_tecnico=" + tipo_tecnico + ", usuario=" + usuario + "]";
+	/**
+	 * @param obtieneT the obtieneT to set
+	 */
+	public void setObtieneT(List<ObtieneT> obtieneT) {
+		this.obtieneT = obtieneT;
 	}
+
+	/** Se eliminar la recursividad */
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Usuario")
+	public List<Usuario> getUsuario() {
+		return usuario;
+	}
+	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ObtieneT")
+	public List<ObtieneT> getObtieneT() {
+		return obtieneT;
+	}
+
 }
