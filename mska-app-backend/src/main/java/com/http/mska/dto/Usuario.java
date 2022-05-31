@@ -108,6 +108,10 @@ public class Usuario {
 	@OneToMany
 	@JoinColumn(name = "id")
 	private List<ComentarioTrabajo> comentarioTrabajo;
+	
+	@OneToMany
+	@JoinColumn(name = "id")
+	private List<PostUsuario> postUsuario;
 
 	// Constructores
 	public Usuario() {
@@ -143,7 +147,7 @@ public class Usuario {
 			String poblacion, String pais, String codigoPostal, Date fechaRegistro, Date fechaNacimiento, int movil,
 			String instagram, String linkedin, int numEntrevista, int numMensajes, int numTrabajos, int numValoraciones,
 			String uriFoto, Tecnico tecnico, Reclutador reclutador, List<Mensaje> mensaje, List<Entrevista> entrevista, 
-			List<Trabajo> trabajo, List<ComentarioTrabajo> comentarioTrabajo) {
+			List<Trabajo> trabajo, List<ComentarioTrabajo> comentarioTrabajo, List<PostUsuario> postUsuario) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -170,6 +174,7 @@ public class Usuario {
 		this.entrevista = entrevista;
 		this.trabajo = trabajo;
 		this.comentarioTrabajo = comentarioTrabajo;
+		this.postUsuario = postUsuario;
 	}
 	
 	
@@ -494,6 +499,13 @@ public class Usuario {
 	public void setTrabajo(List<Trabajo> trabajo) {
 		this.trabajo = trabajo;
 	}
+	
+	/**
+	 * @param postUsuario the postUsuario to set
+	 */
+	public void setPostUsuario(List<PostUsuario> postUsuario) {
+		this.postUsuario = postUsuario;
+	}
 
 	/** JSONIGNORE para eliminar la recursividad ! */
 	@JsonIgnore
@@ -518,5 +530,11 @@ public class Usuario {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "ComentarioTrabajo")
 	public List<ComentarioTrabajo> getComentarioTrabajo() {
 		return comentarioTrabajo;
+	}
+	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "PostUsuario")
+	public List<PostUsuario> getPostUsuario() {
+		return postUsuario;
 	}
 }

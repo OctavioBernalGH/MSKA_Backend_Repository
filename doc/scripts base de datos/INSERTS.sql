@@ -209,3 +209,16 @@ insert into comentario_trabajo(fk_id_usuario, fk_id_trabajo, comentario, fecha_c
 values (1,11, 'Este trabajo es horrible', current_timestamp());
 insert into comentario_trabajo(fk_id_usuario, fk_id_trabajo, comentario, fecha_comentario)
 values (11,1, 'Este trabajo es horrible', current_timestamp());
+
+
+
+
+/*
+============================
+	13. INSERTAR POST_USUARIO
+============================
+*/
+insert into post_usuario(fk_id_usuario, retwit, likes, fecha_post, link, uri_foto)
+values (1, 100, 200, current_timestamp(), 'www.linkfalso....', 'uri foto1');
+insert into post_usuario(fk_id_usuario, retwit, likes, fecha_post, link, uri_foto)
+values (11, 100, 200, current_timestamp(), 'www.linkfalso....', 'uri foto1');

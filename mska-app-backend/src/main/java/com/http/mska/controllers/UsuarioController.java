@@ -83,6 +83,7 @@ public class UsuarioController {
 		usuario_a_modificar.setEntrevista(usuario.getEntrevista());
 		usuario_a_modificar.setTrabajo(usuario.getTrabajo());
 		usuario_a_modificar.setComentarioTrabajo(usuario.getComentarioTrabajo());
+		usuario_a_modificar.setPostUsuario(usuario.getPostUsuario());
 		
 		// Se vuelcan los nuevos datos a la segunda instancia.
 		modificado = usuarioServiceImp.modificarUsuario(usuario_a_modificar);
