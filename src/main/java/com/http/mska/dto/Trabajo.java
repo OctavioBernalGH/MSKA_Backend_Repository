@@ -3,6 +3,7 @@ package com.http.mska.dto;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -27,19 +28,19 @@ public class Trabajo {
 	private Long id;
 	
 	/** Se mapean los atributos de clase con las columnas de la tabla */
-	@Column(name = "descripcion")
+	@Column(name = "descripcion", columnDefinition = "nvarchar(255)", nullable = false)
 	private String descripcion;
 	
-	@Column(name = "fecha_ini")
+	@Column(name = "fecha_ini", columnDefinition = "date", nullable = false)
 	private Date fecha_ini;
 	
-	@Column(name = "fecha_fin")
+	@Column(name = "fecha_fin", columnDefinition = "date", nullable = true)
 	private Date fecha_fin;
 	
-	@Column(name = "estrellas")
+	@Column(name = "estrellas", columnDefinition = "int", nullable = false)
 	private int estrellas =0;
 	
-	@Column(name = "presupuesto")
+	@Column(name = "presupuesto", columnDefinition = "float", nullable = true)
 	private float presupuesto;
 	
 	/** Se generan las relaciones con las diferentes tablas */
@@ -51,11 +52,11 @@ public class Trabajo {
 	@JoinColumn(name="fk_id_asignado")
 	private Usuario usuarioAsignado;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id")
 	private List<ComentarioTrabajo> comentarioTrabajo;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id")
 	private List<Posee> posee;
 

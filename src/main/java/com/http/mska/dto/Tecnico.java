@@ -2,6 +2,7 @@ package com.http.mska.dto;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -26,33 +27,33 @@ public class Tecnico {
 	private Long id;
 	
 	/** Se mapean los atributos de clase con columnas de la tabla */
-	@Column(name = "experiencia")
+	@Column(name = "experiencia", columnDefinition = "int default 0")
 	private int experiencia;
 	
-	@Column(name = "nivel")
+	@Column(name = "nivel", columnDefinition = "int default 1")
 	private int nivel;
 	
-	@Column(name = "github")
+	@Column(name = "github", unique=true, columnDefinition = "nvarchar(255) ", nullable = true)
 	private String github;
 	
-	@Column(name = "pinterest")
+	@Column(name = "pinterest", unique=true,  columnDefinition = "nvarchar(255)", nullable = true)
 	private String pinterest;
 	
-	@Column(name = "trabajo_en_curso")
+	@Column(name = "trabajo_en_curso", columnDefinition = "int default 0")
 	private int trabajo_en_curso;
 	
-	@Column(name = "trabajos_finalizados")
+	@Column(name = "trabajos_finalizados", columnDefinition = "int default 0")
 	private int trabajos_finalizados;
 	
-	@Column(name = "tipo_tecnico")
+	@Column(name = "tipo_tecnico", columnDefinition = "nvarchar(255)", nullable = true)
 	private String tipo_tecnico;
 
 	/** Relaciones de uno a mucho con la tabla usuario y obtieneT */
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id")
 	private List<Usuario> usuario;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id")
 	private List<ObtieneT> obtieneT;
 	

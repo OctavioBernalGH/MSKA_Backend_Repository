@@ -24,10 +24,10 @@ public class ComentarioTrabajo {
 	private Long id;
 
 	/** Se mapean los atributos de clase con las columnas de tabla */
-	@Column(name = "comentario")
+	@Column(name = "comentario", columnDefinition = "nvarchar(255)", nullable = false)
 	private String comentario;
 
-	@Column(name = "fecha_comentario")
+	@Column(name = "fecha_comentario", columnDefinition = "timestamp", nullable = false)
 	private Date fechaComentario;
 	
 	/** Relaciones muchos a uno de la tabla usuario y trabajador */

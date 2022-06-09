@@ -10,11 +10,13 @@ formato date time aceptado
 */
 
 -- Se elimina la verificación de foreign keys --
--- SET FOREIGN_KEY_CHECKS = 1; 
+ SET FOREIGN_KEY_CHECKS = 1;
+ SET FOREIGN_KEY_CHECKS = 0; 
+
 
 DROP TABLE IF EXISTS  reclutador, tecnico, usuario, valoracion, comentario_valoracion, 
 entrevista, mensaje, trabajo, asigna, comentario_trabajo ,bandage_reclutador, obtiene_r,
-post_usuario, bandage_tecnico, obtiene_t, skill, posee, examen;
+post_usuario, bandage_tecnico, obtiene_t, skill, posee, examen, usuario_security, usuariosecurity;
 
 /*
 Script utilizado para la creación de la tabla RECLUTADOR

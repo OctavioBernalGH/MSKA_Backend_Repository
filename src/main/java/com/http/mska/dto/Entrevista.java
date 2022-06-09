@@ -19,13 +19,13 @@ public class Entrevista {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "fecha_entrevista")
+	@Column(name = "fecha_entrevista", columnDefinition = "datetime", nullable = false)
 	private Date fecha_entrevista;
 	
-	@Column(name ="duracion")
+	@Column(name ="duracion", columnDefinition = "int", nullable = false)
 	private int duracion;
 	
-	@Column(name ="estado_entrevista_bol")
+	@Column(name ="estado_entrevista_bol", columnDefinition = "bit", nullable = false)
 	private boolean estado_entrevista;
 	
 	@ManyToOne

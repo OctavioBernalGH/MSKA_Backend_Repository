@@ -25,10 +25,10 @@ public class Mensaje {
 	private Long id;
 
 	/** Asociar columnas en la BBDD a atributos Java. */
-	@Column(name = "mensaje")
+	@Column(name = "mensaje", columnDefinition = "nvarchar(255)", nullable = false)
 	private String mensaje;
 
-	@Column(name = "fecha_mensaje")
+	@Column(name = "fecha_mensaje", columnDefinition = "timestamp", nullable = false)
 	private Date fecha_mensaje;
 	
 	@ManyToOne

@@ -1,6 +1,8 @@
 package com.http.mska.dto;
 
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,20 +27,20 @@ public class BandageTecnico {
 	private Long id;
 
 	/** Se mapean los atributos de clase con las columnas de la tabla */
-	@Column(name = "nombre")
+	@Column(name = "nombre", columnDefinition = "nvarchar(255)", nullable = false)
 	private String nombre;
 	
-	@Column(name = "tipo")
+	@Column(name = "tipo", columnDefinition = "nvarchar(255)", nullable = false)
 	private String tipo;
 	
-	@Column(name = "descripcion")
+	@Column(name = "descripcion", columnDefinition = "nvarchar(255)", nullable = true)
 	private String descripcion;
 	
-	@Column(name = "cantidadExp")
+	@Column(name = "cantidadExp", columnDefinition = "int", nullable = false)
 	private String cantidadExp;
 
 	/** Relación de uno a muchos */
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id")
 	private List<ObtieneT> obtieneT;
 	
