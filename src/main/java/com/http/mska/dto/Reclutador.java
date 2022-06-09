@@ -2,6 +2,8 @@ package com.http.mska.dto;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+
 /**
  * @Autors * Ixabel_Justo * Octavio Bernal * David Dalmau * Oriol Lopez *
  * @version 0.0.1
@@ -28,23 +30,23 @@ public class Reclutador {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "experiencia")
+	@Column(name = "experiencia", columnDefinition = "int default 0")
 	private int experiencia = 0;
 	
-	@Column(name = "nivel")
+	@Column(name = "nivel", columnDefinition = "int default 1")
 	private int nivel = 1;
 	
-	@Column(name = "web")
+	@Column(name = "web", columnDefinition = "nvarchar(255)")
 	private String web="";
 	
-	@Column(name = "tipo_reclutador")
+	@Column(name = "tipo_reclutador", columnDefinition = "nvarchar(255)")
 	private String tipoReclutador="";
 
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id")
 	private List<Usuario> usuario;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id")
 	private List<ObtieneR> obtieneR;
 

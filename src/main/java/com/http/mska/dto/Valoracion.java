@@ -17,16 +17,16 @@ public class Valoracion {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "estrellas")
+	@Column(name = "estrellas", columnDefinition = "int", nullable = false)
 	private int estrellas = 0;
 
-	@Column(name = "comentario")
+	@Column(name = "comentario", columnDefinition = "nvarchar(255)", nullable = false)
 	private String comentario;
 
-	@Column(name = "reclutador")
+	@Column(name = "reclutador", columnDefinition = "nvarchar(100)", nullable = false)
 	private String reclutador;
 
-	@Column(name = "tecnico")
+	@Column(name = "tecnico", columnDefinition = "nvarchar(100)", nullable = false)
 	private String tecnico;
 
 	/** Relacion N a 1 con usuarios */

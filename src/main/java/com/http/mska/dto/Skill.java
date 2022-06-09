@@ -2,6 +2,7 @@ package com.http.mska.dto;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,24 +26,24 @@ public class Skill {
 	private Long id;
 	
 	/** Se mapean los atributos de clase con las columnas en la BBDD */
-	@Column(name = "tipo")
+	@Column(name = "tipo", columnDefinition = "nvarchar(255)", nullable = false)
 	private String tipo;
 	
-	@Column(name = "validado")
+	@Column(name = "validado", columnDefinition = "bit default 0")
 	private boolean validado;
 	
-	@Column(name = "descripcion")
+	@Column(name = "descripcion", columnDefinition = "nvarchar(255)", nullable = true)
 	private String descripcion;
 	
-	@Column(name = "cantidad_exp")
+	@Column(name = "cantidad_exp", columnDefinition = "int", nullable = false)
 	private int cantidad_exp;
 	
 	/** Relación de uno a muchos con la tabla posee */
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id")
 	private List<Posee> posee;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name="id")
 	private List<Examen> examen;
 	

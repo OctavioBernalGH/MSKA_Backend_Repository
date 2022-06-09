@@ -3,6 +3,7 @@ package com.http.mska.dto;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -30,58 +31,58 @@ public class Usuario {
 	private Long id;
 
 	/** Mapeos de columnas en base de datos con atributos en Spring */
-	@Column(name = "nombre")
+	@Column(name = "nombre", columnDefinition = "nvarchar(255)", nullable = false)
 	private String nombre;
 
-	@Column(name = "apellidos")
+	@Column(name = "apellidos", columnDefinition = "nvarchar(255)", nullable = false)
 	private String apellidos;
 
-	@Column(name = "email")
+	@Column(name = "email", unique=true,  columnDefinition = "nvarchar(255)", nullable = false)
 	private String email;
 
-	@Column(name = "nombre_usuario")
+	@Column(name = "nombre_usuario", unique=true,  columnDefinition = "nvarchar(255)", nullable = false)
 	private String nombreUsuario;
 
-	@Column(name = "contraseña")
+	@Column(name = "contraseña", columnDefinition = "nvarchar(255)", nullable = false)
 	private String contraseña;
 
-	@Column(name = "poblacion")
+	@Column(name = "poblacion", columnDefinition = "nvarchar(255)", nullable = false)
 	private String poblacion;
 
-	@Column(name = "pais")
+	@Column(name = "pais", columnDefinition = "nvarchar(255)", nullable = false)
 	private String pais;
 
-	@Column(name = "cp")
+	@Column(name = "cp", columnDefinition = "nvarchar(255)", nullable = false)
 	private String codigoPostal;
 
-	@Column(name = "fecha_registro")
+	@Column(name = "fecha_registro", columnDefinition = "timestamp")
 	private Date fechaRegistro;
 
-	@Column(name = "fecha_nacimiento")
+	@Column(name = "fecha_nacimiento", nullable = false)
 	private Date fechaNacimiento;
 
-	@Column(name = "movil")
+	@Column(name = "movil", columnDefinition = "int", nullable = true)
 	private int movil;
 
-	@Column(name = "instagram")
+	@Column(name = "instagram", unique=true,  columnDefinition = "nvarchar(255)", nullable = true)
 	private String instagram;
 
-	@Column(name = "linkedin")
+	@Column(name = "linkedin", unique=true, columnDefinition = "nvarchar(255)", nullable = true)
 	private String linkedin;
 
-	@Column(name = "num_entrevista")
+	@Column(name = "num_entrevista", columnDefinition = "int default 0")
 	private int numEntrevista;
 
-	@Column(name = "num_mensajes")
+	@Column(name = "num_mensajes", columnDefinition = "int default 0")
 	private int numMensajes;
 
-	@Column(name = "num_trabajos")
+	@Column(name = "num_trabajos", columnDefinition = "int default 0")
 	private int numTrabajos;
 	
-	@Column(name = "num_valoraciones")
+	@Column(name = "num_valoraciones", columnDefinition = "int default 0")
 	private int numValoraciones;
 
-	@Column(name = "uri_foto")
+	@Column(name = "uri_foto", columnDefinition = "nvarchar(255)", nullable = true)
 	private String uriFoto;
 
 	/** RELACIONES CON OTRAS TABLAS */
@@ -93,25 +94,29 @@ public class Usuario {
 	@JoinColumn(name="fk_id_reclutador")
 	private Reclutador reclutador;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id")
 	private List<Mensaje> mensaje;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id")
 	private List<Entrevista> entrevista;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id")
 	private List<Trabajo> trabajo;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id")
 	private List<ComentarioTrabajo> comentarioTrabajo;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id")
 	private List<PostUsuario> postUsuario;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id")
+	private List<Valoracion> valoracion;
 
 	// Constructores
 	public Usuario() {
@@ -147,7 +152,7 @@ public class Usuario {
 			String poblacion, String pais, String codigoPostal, Date fechaRegistro, Date fechaNacimiento, int movil,
 			String instagram, String linkedin, int numEntrevista, int numMensajes, int numTrabajos, int numValoraciones,
 			String uriFoto, Tecnico tecnico, Reclutador reclutador, List<Mensaje> mensaje, List<Entrevista> entrevista, 
-			List<Trabajo> trabajo, List<ComentarioTrabajo> comentarioTrabajo, List<PostUsuario> postUsuario) {
+			List<Trabajo> trabajo, List<ComentarioTrabajo> comentarioTrabajo, List<PostUsuario> postUsuario, List<Valoracion> valoracion) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -175,6 +180,7 @@ public class Usuario {
 		this.trabajo = trabajo;
 		this.comentarioTrabajo = comentarioTrabajo;
 		this.postUsuario = postUsuario;
+		this.valoracion = valoracion;
 	}
 	
 	
@@ -506,6 +512,13 @@ public class Usuario {
 	public void setPostUsuario(List<PostUsuario> postUsuario) {
 		this.postUsuario = postUsuario;
 	}
+		
+	/**
+	 * @param valoracion the valoracion to set
+	 */
+	public void setValoracion(List<Valoracion> valoracion) {
+		this.valoracion = valoracion;
+	}
 
 	/** JSONIGNORE para eliminar la recursividad ! */
 	@JsonIgnore
@@ -536,5 +549,11 @@ public class Usuario {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "PostUsuario")
 	public List<PostUsuario> getPostUsuario() {
 		return postUsuario;
+	}
+	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Valoracion")
+	public List<Valoracion> getValoracion() {
+		return valoracion;
 	}
 }

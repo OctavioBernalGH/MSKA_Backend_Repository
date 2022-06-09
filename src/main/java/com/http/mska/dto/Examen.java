@@ -17,16 +17,16 @@ public class Examen {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name="nombre")
+	@Column(name="nombre", columnDefinition = "nvarchar(255)", nullable = false)
 	private String nombre;
 	
-	@Column(name="tipo")
+	@Column(name="tipo", columnDefinition = "nvarchar(255)", nullable = false)
 	private String tipo;
 	
-	@Column(name= "descripcion")
+	@Column(name= "descripcion", columnDefinition = "nvarchar(255)", nullable = true)
 	private String descripcion;
 	
-	@Column(name= "cantidad_exp")
+	@Column(name= "cantidad_exp", columnDefinition = "int", nullable = false)
 	private int cantidadExp;
 	
 	@ManyToOne
