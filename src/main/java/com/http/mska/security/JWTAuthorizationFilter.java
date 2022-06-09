@@ -1,22 +1,18 @@
 package com.http.mska.security;
+
 import static com.http.mska.security.Constants.HEADER_AUTHORIZACION_KEY;
 import static com.http.mska.security.Constants.SUPER_SECRET_KEY;
 import static com.http.mska.security.Constants.TOKEN_BEARER_PREFIX;
-
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
-
-import io.jsonwebtoken.Claims; 
 import io.jsonwebtoken.Jwts;
 
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
