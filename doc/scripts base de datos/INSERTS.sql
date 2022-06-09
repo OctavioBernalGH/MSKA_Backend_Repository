@@ -14,7 +14,7 @@ values ('testweb4', 'reclutado 4');
 insert into reclutador (web, tipo_reclutador)
 values ('testweb5', 'reclutado 5');
 
-select * from reclutador;
+-- select * from reclutador;
 
 
 /**
@@ -33,7 +33,7 @@ values (150, 3, 'github4', 'pinterest4',  50, 'test5');
 insert into tecnico (experiencia, nivel, github, pinterest, trabajo_en_curso, tipo_tecnico)
 values (150, 3, 'github5', 'pinterest5', 10, 'test6');
 
-select * from tecnico;
+-- select * from tecnico;
 
 
 /**
@@ -68,7 +68,7 @@ fk_id_reclutador, fk_id_tecnico, uri_foto)
 values ('Test2', 'a55555peTest', '555555mailTest', '55555usernameTest', 'passTest', 'poblaTest', 'paisTest', '43006' , current_timestamp(), '2015/10/10', 600000, 'instaTest5',
 'linkedTest5', 41,41, 'uriTest' );
 
-select * from usuario;
+-- select * from usuario;
 
 
 /**
@@ -87,7 +87,7 @@ values (31, 4, 'Me gusta4', 'Paco4', 'Manoli4');
 insert into valoracion (fk_id_usuario, estrellas, comentario, reclutador, tecnico)
 values (41, 5, 'Me gusta5', 'Paco5', 'Manoli5');
 
-select * from valoracion;
+-- select * from valoracion;
 
 
 /*
@@ -106,7 +106,7 @@ values (31, 31, '2023-08-10 22:00:00', 30, 0);
 insert into entrevista (fk_id_entrevistador, fk_id_entrevistado, fecha_entrevista, duracion, estado_entrevista_bol)
 values (41, 41, '2023-08-10 22:00:00', 30, 0);
 
-select * from entrevista;
+-- select * from entrevista;
 
 
 
@@ -127,7 +127,7 @@ values (31, 'Contratado !', current_timestamp(), 41);
 insert into mensaje (fk_id_emisor, mensaje, fecha_mensaje, fk_id_receptor)
 values (41, 'Contratado !', current_timestamp(), 1);
 
-select * from mensaje;
+-- select * from mensaje;
 
 
 
@@ -147,7 +147,7 @@ values (31,31, 'Albañil tecnológico', '2022-08-15', '2023-05-05', 4, 1330.15);
 insert into trabajo (fk_id_asignador, fk_id_asignado, descripcion, fecha_ini, fecha_fin, estrellas, presupuesto) 
 values (41,41, 'Albañil tecnológico', '2022-08-15', '2023-05-05', 4, 1330.15);
 
-select * from trabajo;
+-- select * from trabajo;
 
 
 
@@ -168,7 +168,7 @@ VALUES('Gran novato', 'Bandage de Reclutador 2', 'Interactua 15 veces', '4');
 INSERT INTO bandage_reclutador(nombre, tipo, descripcion, cantidad_exp)
 VALUES('Gran novato', 'Bandage de Reclutador 2', 'Interactua 15 veces', '4');
 
-select * from reclutador;
+-- select * from reclutador;
 
 
 
@@ -189,7 +189,7 @@ values (31,31);
 insert into obtiene_r(fk_id_reclutador, fk_id_bandage_reclutador)
 values (41,41);
 
-select * from obtiene_r;
+-- select * from obtiene_r;
 
 
 
@@ -210,7 +210,7 @@ VALUES('Novice pro3', 'Bandage de Tecnico 3', 'Comete un bollo3', '8');
 INSERT INTO bandage_tecnico(nombre, tipo, descripcion, cantidad_exp) 
 VALUES('Novice pro4', 'Bandage de Tecnico 4', 'Comete un bollo4', '10');
 
-select * from bandage_tecnico;
+-- select * from bandage_tecnico;
 
 
 
@@ -231,7 +231,7 @@ values (31,31);
 insert into obtiene_t(fk_id_tecnico, fk_id_bandage_tecnico)
 values (41,41);
 
-select * from obtiene_t;
+-- select * from obtiene_t;
 
 
 
@@ -252,7 +252,7 @@ values (31,31, 'Este trabajo es horrible4', current_timestamp());
 insert into comentario_trabajo(fk_id_usuario, fk_id_trabajo, comentario, fecha_comentario)
 values (41,41, 'Este trabajo es horrible5', current_timestamp());
 
-select * from comentario_trabajo;
+-- select * from comentario_trabajo;
 
 
 
@@ -273,7 +273,7 @@ values (31, 200, current_timestamp(), 'www.linkfalso4....', 'uri foto4');
 insert into post_usuario(fk_id_usuario, likes, fecha_post, link, uri_foto)
 values (41, 200, current_timestamp(), 'www.linkfalso5....', 'uri foto5');
 
-select * from post_usuario;
+-- select * from post_usuario;
 
 
 
@@ -294,7 +294,7 @@ values ('Skill Test 4', 0, ' testeo de skills 4', 20);
 insert into skill (tipo, validado, descripcion, cantidad_exp)
 values ('Skill Test 5', 0, ' testeo de skills 5', 25);
 
-select * from skills;
+-- select * from skills;
 
 
 
@@ -315,7 +315,7 @@ values(31,31);
 insert into posee(fk_id_skill, fk_id_trabajo)
 values(41,41);
 
-select * from posee;
+-- select * from posee;
 
 
 
@@ -336,7 +336,7 @@ values (31, 'Examen c++', 'Tipo 3', 'Descripción 3', 35);
 insert into examen (fk_id_skill, nombre, tipo, descripcion, cantidad_exp)
 values (41, 'Examen typescript', 'Tipo 3', 'Descripción 3', 35);
 
-select * from examen;
+-- select * from examen;
 
 
 
