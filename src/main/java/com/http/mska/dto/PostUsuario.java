@@ -21,10 +21,10 @@ public class PostUsuario {
 	private Long id;
 
 	/** Se mapean los atributos de clase con las columnas de la base de datos */
-	@Column(name = "retwit", columnDefinition = "int", nullable = true)
+	@Column(name = "retwit", columnDefinition = "int default 0", nullable = true)
 	private int retwit;
 
-	@Column(name = "likes", columnDefinition = "int", nullable = true)
+	@Column(name = "likes", columnDefinition = "int default 0", nullable = true)
 	private int likes;
 
 	@Column(name = "fecha_post", columnDefinition = "timestamp", nullable = false)
