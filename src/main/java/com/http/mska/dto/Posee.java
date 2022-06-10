@@ -1,5 +1,6 @@
 package com.http.mska.dto;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,11 +20,11 @@ public class Posee {
 	private Long id;
 	
 	/** Relaciones con las tablas skill y trabajo */
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_id_skill")
 	private Skill skill;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_id_trabajo")
 	private Trabajo trabajo;
 	

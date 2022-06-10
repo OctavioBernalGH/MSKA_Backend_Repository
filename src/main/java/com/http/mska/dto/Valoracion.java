@@ -1,5 +1,6 @@
 package com.http.mska.dto;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,7 +31,7 @@ public class Valoracion {
 	private String tecnico;
 
 	/** Relacion N a 1 con usuarios */
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_id_usuario")
 	private Usuario usuario;
 

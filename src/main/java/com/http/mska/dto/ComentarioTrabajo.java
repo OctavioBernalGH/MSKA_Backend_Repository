@@ -1,6 +1,8 @@
 package com.http.mska.dto;
 
 import java.util.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,11 +33,11 @@ public class ComentarioTrabajo {
 	private Date fechaComentario;
 	
 	/** Relaciones muchos a uno de la tabla usuario y trabajador */
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_id_usuario")
 	private Usuario usuario;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_id_trabajo")
 	private Trabajo trabajo;
 	

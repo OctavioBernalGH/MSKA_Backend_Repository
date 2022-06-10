@@ -1,6 +1,8 @@
 package com.http.mska.dto;
 
 import java.util.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,7 +39,7 @@ public class PostUsuario {
 	private String uriFoto;
 	
 	/** Relación uno a muchos con la tabla Usuario */
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_id_usuario")
 	private Usuario usuario;
 	

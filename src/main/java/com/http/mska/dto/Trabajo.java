@@ -44,11 +44,11 @@ public class Trabajo {
 	private float presupuesto;
 	
 	/** Se generan las relaciones con las diferentes tablas */
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="fk_id_asignador")
 	private Usuario usuarioAsignador;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="fk_id_asignado")
 	private Usuario usuarioAsignado;
 	
