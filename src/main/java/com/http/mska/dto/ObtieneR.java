@@ -1,5 +1,6 @@
 package com.http.mska.dto;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,12 +20,12 @@ public class ObtieneR {
 	private Long id;
 	
 	/** Relación con la tabla reclutador mediante la foreign key */
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_id_reclutador")
 	private Reclutador reclutador;
 	
 	/** Relación con la tabla bandage reclutador mediante la foreign key */
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_id_bandage_reclutador")
 	private BandageReclutador bandageReclutador;
 	

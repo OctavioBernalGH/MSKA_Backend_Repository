@@ -1,5 +1,6 @@
 package com.http.mska.dto;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,12 +20,12 @@ public class ObtieneT {
 	private Long id;
 	
 	/** Clave foránea de técnico */
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_id_tecnico")
 	private Tecnico tecnico;
 	
 	/** Clave foránea de bandageTecnico */
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_id_bandage_tecnico")
 	private BandageTecnico bandageTecnico;
 	

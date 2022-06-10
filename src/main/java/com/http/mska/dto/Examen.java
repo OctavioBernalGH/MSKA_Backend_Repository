@@ -1,5 +1,6 @@
 package com.http.mska.dto;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,7 +30,7 @@ public class Examen {
 	@Column(name= "cantidad_exp", columnDefinition = "int", nullable = false)
 	private int cantidadExp;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name= "fk_id_skill")
 	private Skill skill;
 	

@@ -2,6 +2,7 @@ package com.http.mska.dto;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,11 +29,11 @@ public class Entrevista {
 	@Column(name ="estado_entrevista_bol", columnDefinition = "bit", nullable = false)
 	private boolean estado_entrevista;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="fk_id_entrevistador")
 	private Usuario entrevistador;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="fk_id_entrevistado")
 	private Usuario entrevistado;
 

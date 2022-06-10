@@ -5,6 +5,8 @@ package com.http.mska.dto;
  */
 
 import java.util.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,11 +33,11 @@ public class Mensaje {
 	@Column(name = "fecha_mensaje", columnDefinition = "timestamp", nullable = false)
 	private Date fecha_mensaje;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_id_emisor")
 	private Usuario usuario;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_id_receptor")
 	private Usuario destinatario;
 	

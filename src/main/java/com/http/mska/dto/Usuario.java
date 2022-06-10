@@ -86,11 +86,11 @@ public class Usuario {
 	private String uriFoto;
 
 	/** RELACIONES CON OTRAS TABLAS */
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="fk_id_tecnico")
 	private Tecnico tecnico;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="fk_id_reclutador")
 	private Reclutador reclutador;
 	
