@@ -87,11 +87,11 @@ public class Usuario {
 
 	/** RELACIONES CON OTRAS TABLAS */
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="fk_id_tecnico", nullable = true)
+	@JoinColumn(name="fk_id_tecnico", nullable = true, unique = false)
 	private Tecnico tecnico;
 
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="fk_id_reclutador", nullable = true)
+	@JoinColumn(name="fk_id_reclutador", nullable = true, unique = false)
 	private Reclutador reclutador;
 	
 	@OneToMany(cascade = CascadeType.ALL)
