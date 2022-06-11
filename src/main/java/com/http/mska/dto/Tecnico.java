@@ -50,7 +50,7 @@ public class Tecnico {
 
 	/** Relaciones de uno a mucho con la tabla usuario y obtieneT */
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id", unique = false, nullable = true)
+	@JoinColumn(name = "id", nullable = true)
 	private List<Usuario> usuario;
 	
 	@OneToMany(cascade = CascadeType.ALL)

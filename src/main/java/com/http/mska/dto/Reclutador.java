@@ -43,7 +43,7 @@ public class Reclutador {
 	private String tipoReclutador="";
 
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id", unique = false, nullable = true)
+	@JoinColumn(name = "id", nullable = true)
 	private List<Usuario> usuario;
 	
 	@OneToMany(cascade = CascadeType.ALL)
