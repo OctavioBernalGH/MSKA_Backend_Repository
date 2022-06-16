@@ -62,8 +62,8 @@ public class UsuarioController {
 		usuario_a_modificar.setNombre(usuario.getNombre());
 		usuario_a_modificar.setApellidos(usuario.getApellidos());
 		usuario_a_modificar.setEmail(usuario.getEmail());
-		usuario_a_modificar.setNombreUsuario(usuario.getNombreUsuario());
-		usuario_a_modificar.setContraseña(usuario.getContraseña());
+		usuario_a_modificar.setUsername(usuario.getUsername());
+		usuario_a_modificar.setPassword(usuario.getPassword());
 		usuario_a_modificar.setPoblacion(usuario.getPoblacion());
 		usuario_a_modificar.setPais(usuario.getPais());
 		usuario_a_modificar.setCodigoPostal(usuario.getCodigoPostal());

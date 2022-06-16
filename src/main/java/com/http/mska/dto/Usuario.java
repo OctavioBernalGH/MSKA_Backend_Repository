@@ -1,5 +1,7 @@
 package com.http.mska.dto;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -15,6 +17,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
@@ -23,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 @Entity
 @Table(name = "usuario")
-public class Usuario {
+public class Usuario implements UserDetails{
 
 	/** Se genera el ID de forma auto incremental en la base de datos */
 	@Id
@@ -40,11 +46,11 @@ public class Usuario {
 	@Column(name = "email", unique=true,  columnDefinition = "nvarchar(255)", nullable = false)
 	private String email;
 
-	@Column(name = "nombre_usuario", unique=true,  columnDefinition = "nvarchar(255)", nullable = false)
-	private String nombreUsuario;
+	@Column(name = "username", unique=true,  columnDefinition = "nvarchar(255)", nullable = false)
+	private String username;
 
-	@Column(name = "contraseña", columnDefinition = "nvarchar(255)", nullable = false)
-	private String contraseña;
+	@Column(name = "password", columnDefinition = "nvarchar(255)", nullable = false)
+	private String password;
 
 	@Column(name = "poblacion", columnDefinition = "nvarchar(255)", nullable = false)
 	private String poblacion;
@@ -93,6 +99,10 @@ public class Usuario {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="fk_id_reclutador", nullable = true)
 	private Reclutador reclutador;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="fk_id_rol")
+	private Rol rol;
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id")
@@ -148,18 +158,19 @@ public class Usuario {
 	 * @param mensaje
 	 * @param trabajo
 	 */
-	public Usuario(Long id, String nombre, String apellidos, String email, String nombreUsuario, String contraseña,
+	public Usuario(Long id, String nombre, String apellidos, String email, String username, String password,
 			String poblacion, String pais, String codigoPostal, Date fechaRegistro, Date fechaNacimiento, int movil,
 			String instagram, String linkedin, int numEntrevista, int numMensajes, int numTrabajos, int numValoraciones,
 			String uriFoto, Tecnico tecnico, Reclutador reclutador, List<Mensaje> mensaje, List<Entrevista> entrevista, 
-			List<Trabajo> trabajo, List<ComentarioTrabajo> comentarioTrabajo, List<PostUsuario> postUsuario, List<Valoracion> valoracion) {
+			List<Trabajo> trabajo, List<ComentarioTrabajo> comentarioTrabajo, List<PostUsuario> postUsuario, List<Valoracion> valoracion,
+			Rol rol) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.email = email;
-		this.nombreUsuario = nombreUsuario;
-		this.contraseña = contraseña;
+		this.username = username;
+		this.password = password;
 		this.poblacion = poblacion;
 		this.pais = pais;
 		this.codigoPostal = codigoPostal;
@@ -181,6 +192,7 @@ public class Usuario {
 		this.comentarioTrabajo = comentarioTrabajo;
 		this.postUsuario = postUsuario;
 		this.valoracion = valoracion;
+		this.rol = rol;
 	}
 	
 	
@@ -238,34 +250,6 @@ public class Usuario {
 	 */
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	/**
-	 * @return the nombreUsuario
-	 */
-	public String getNombreUsuario() {
-		return nombreUsuario;
-	}
-
-	/**
-	 * @param nombreUsuario the nombreUsuario to set
-	 */
-	public void setNombreUsuario(String nombreUsuario) {
-		this.nombreUsuario = nombreUsuario;
-	}
-
-	/**
-	 * @return the contraseña
-	 */
-	public String getContraseña() {
-		return contraseña;
-	}
-
-	/**
-	 * @param contraseña the contraseña to set
-	 */
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
 	}
 
 	/**
@@ -519,6 +503,20 @@ public class Usuario {
 	public void setValoracion(List<Valoracion> valoracion) {
 		this.valoracion = valoracion;
 	}
+		
+	/**
+	 * @return the rol
+	 */
+	public Rol getRol() {
+		return rol;
+	}
+
+	/**
+	 * @param rol the rol to set
+	 */
+	public void setRol(Rol rol) {
+		this.rol = rol;
+	}
 
 	/** JSONIGNORE para eliminar la recursividad ! */
 	@JsonIgnore
@@ -556,4 +554,61 @@ public class Usuario {
 	public List<Valoracion> getValoracion() {
 		return valoracion;
 	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		List<GrantedAuthority> roles = new ArrayList<>();
+		
+		if(rol != null) {
+			roles.add(new SimpleGrantedAuthority(rol.getId().toString()));
+		}
+		 
+		return roles;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
+
+	@Override
+	public String getPassword() {
+		return password;
+	}
+
+	@Override
+	public String getUsername() {
+		return username;
+	}
+
+	/**
+	 * @param username the username to set
+	 */
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	/**
+	 * @param password the password to set
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	
 }
