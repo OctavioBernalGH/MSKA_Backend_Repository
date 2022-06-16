@@ -31,6 +31,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "usuario")
 public class Usuario implements UserDetails{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/** Se genera el ID de forma auto incremental en la base de datos */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
