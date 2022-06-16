@@ -22,7 +22,6 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.http.mska.dto.Usuario;
@@ -60,11 +59,9 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 				.claim("roles", auth.getAuthorities().iterator().next().getAuthority())
 				.setExpiration(new Date(System.currentTimeMillis() + TOKEN_EXPIRATION_TIME))
 				.signWith(SignatureAlgorithm.HS512, SUPER_SECRET_KEY).compact();
-		response.addHeader(HEADER_AUTHORIZACION_KEY, TOKEN_BEARER_PREFIX + " " + token);// devuelve token por cabecera
-		response.getWriter().write("{\"token\": \"" + token + "\"}");// devuelve token por body
+		response.addHeader(HEADER_AUTHORIZACION_KEY, TOKEN_BEARER_PREFIX + " " + token);
+		response.getWriter().write("{\"token\": \"" + token + "\"}");
 		System.out.println(response.getHeader(HEADER_AUTHORIZACION_KEY));
 	}
-	
-	
-	
+
 }
