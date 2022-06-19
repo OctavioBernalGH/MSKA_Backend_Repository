@@ -2,9 +2,7 @@ package com.http.mska.security;
 
 import static com.http.mska.security.Constants.LOGIN_URL;
 import static com.http.mska.security.Constants.REGISTER_URL;
-
 import java.util.Arrays;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;

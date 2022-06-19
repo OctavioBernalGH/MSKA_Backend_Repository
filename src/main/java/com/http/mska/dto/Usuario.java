@@ -48,10 +48,10 @@ public class Usuario implements UserDetails{
 	@Column(name = "email", unique=true,  columnDefinition = "nvarchar(255)", nullable = false)
 	private String email;
 
-	@Column(name = "nombre_usuario", unique=true,  columnDefinition = "nvarchar(255)", nullable = false)
+	@Column(name = "username", unique=true,  columnDefinition = "nvarchar(255)", nullable = false)
 	private String username;
 
-	@Column(name = "contraseña", columnDefinition = "nvarchar(255)", nullable = false)
+	@Column(name = "password", columnDefinition = "nvarchar(255)", nullable = false)
 	private String password;
 
 	@Column(name = "poblacion", columnDefinition = "nvarchar(255)", nullable = false)

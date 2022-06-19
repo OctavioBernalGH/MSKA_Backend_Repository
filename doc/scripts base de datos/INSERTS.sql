@@ -1,3 +1,9 @@
+/** INSERTAR ROLES */
+insert into roles (nombre) values ('usuario');
+insert into roles (nombre) values ('administrador');
+insert into roles (nombre) values ('superadministrador');
+
+
 /**
 ============================
 	1. INSERTAR RECLUTADOR
@@ -45,28 +51,28 @@ insert into usuario (nombre, apellidos, email, username, password,
 poblacion, pais, cp, fecha_registro, fecha_nacimiento, movil, instagram, linkedin, 
 num_entrevista, num_mensajes, num_trabajos, num_valoraciones, fk_id_reclutador, fk_id_rol, fk_id_tecnico, uri_foto) 
 values ('Test1', 'ApeTest', 'mailTest', 'usernameTest', 'passTest', 'poblaTest', 'paisTest', '43006' , current_timestamp(), '2015/10/10', 600000, 'instaTest',
-'linkedTest', 5,5,5,5,1,1, 'uriTest' );
+'linkedTest', 5,5,5,5,1,1,1, 'uriTest' );
 /* Insert en usuarios */
-insert into usuario (nombre, apellidos, email, username, password,  
+insert into usuario (nombre, apellidos, email,  username, password,   
 poblacion, pais, cp, fecha_registro, fecha_nacimiento, movil, instagram, linkedin, 
 num_entrevista, num_mensajes, num_trabajos, num_valoraciones, fk_id_reclutador, fk_id_rol, fk_id_tecnico, uri_foto) 
-values ('Test2', 'a22222peTest', '22222mailTest', '22222usernameTest', 'passTest', 'poblaTest', 'paisTest', '43006' , current_timestamp(), '2015/10/10', 600000, 'instaTest2',
-'linkedTest2', 5,5,5,5,11,21, 'uriTest' );
-insert into usuario (nombre, apellidos, email, username, password, 
+values ('Test2', 'a22222peTest', '22222mailTest', '22222usernameTest', '$2a$10$XURPShQNCsLjp1ESc2laoObo9QZDhxz73hJPaEv7/cBha4pk0AgP.', 'poblaTest', 'paisTest', '43006' , current_timestamp(), '2015/10/10', 600000, 'instaTest2',
+'linkedTest2', 5,5,5,5,11,11,21, 'uriTest' );
+insert into usuario (nombre, apellidos, email,  username, password,  
 poblacion, pais, cp, fecha_registro, fecha_nacimiento, movil, instagram, linkedin, 
 num_entrevista, num_mensajes, num_trabajos, num_valoraciones, fk_id_reclutador, fk_id_rol, fk_id_tecnico, uri_foto) 
-values ('Test3', 'a33333peTest', '33333mailTest', '33333usernameTest', 'passTest', 'poblaTest', 'paisTest', '43006' , current_timestamp(), '2015/10/10', 600000, 'instaTest3',
-'linkedTest3', 5,5,5,5,21,11, 'uriTest' );
-insert into usuario (nombre, apellidos, email, username, password,  
+values ('Test3', 'a33333peTest', '33333mailTest', '33333usernameTest', '$2a$10$XURPShQNCsLjp1ESc2laoObo9QZDhxz73hJPaEv7/cBha4pk0AgP.', 'poblaTest', 'paisTest', '43006' , current_timestamp(), '2015/10/10', 600000, 'instaTest3',
+'linkedTest3', 5,5,5,5,21,21,11, 'uriTest' );
+insert into usuario (nombre, apellidos, email,  username, password, 
 poblacion, pais, cp, fecha_registro, fecha_nacimiento, movil, instagram, linkedin, 
 num_entrevista, num_mensajes, num_trabajos, num_valoraciones, fk_id_reclutador, fk_id_rol, fk_id_tecnico, uri_foto) 
-values ('Test2', 'a44444peTest', '44444mailTest', '44444usernameTest', 'passTest', 'poblaTest', 'paisTest', '43006' , current_timestamp(), '2015/10/10', 600000, 'instaTest4',
-'linkedTest4', 5,5,5,5,31,31, 'uriTest' );
-insert into usuario (nombre, apellidos, email, username, password,  
+values ('Test2', 'a44444peTest', '44444mailTest', '44444usernameTest', '$2a$10$XURPShQNCsLjp1ESc2laoObo9QZDhxz73hJPaEv7/cBha4pk0AgP.', 'poblaTest', 'paisTest', '43006' , current_timestamp(), '2015/10/10', 600000, 'instaTest4',
+'linkedTest4', 5,5,5,5,31,1,31, 'uriTest' );
+insert into usuario (nombre, apellidos, email,  username, password, 
 poblacion, pais, cp, fecha_registro, fecha_nacimiento, movil, instagram, linkedin, 
 fk_id_reclutador, fk_id_rol, fk_id_tecnico, uri_foto) 
-values ('Test2', 'a55555peTest', '555555mailTest', '55555usernameTest', 'passTest', 'poblaTest', 'paisTest', '43006' , current_timestamp(), '2015/10/10', 600000, 'instaTest5',
-'linkedTest5', 41,41, 'uriTest' );
+values ('Test2', 'a55555peTest', '555555mailTest', '55555usernameTest', '$2a$10$XURPShQNCsLjp1ESc2laoObo9QZDhxz73hJPaEv7/cBha4pk0AgP.', 'poblaTest', 'paisTest', '43006' , current_timestamp(), '2015/10/10', 600000, 'instaTest5',
+'linkedTest5', 41,1,41, 'uriTest' );
 
 -- select * from usuario;
 
