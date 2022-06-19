@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * Se define la clase Usuarios como entidad y se mapea con la tabla usuarios de
- * la base de datos
+ * la base de datos.
  */
 @Entity
 @Table(name = "usuario")
