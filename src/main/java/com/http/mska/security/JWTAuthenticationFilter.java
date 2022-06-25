@@ -1,4 +1,4 @@
-/*
+
 package com.http.mska.security;
 
 import static com.http.mska.security.Constants.HEADER_AUTHORIZACION_KEY;
@@ -66,4 +66,3 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 	}
 
 }
-*/
