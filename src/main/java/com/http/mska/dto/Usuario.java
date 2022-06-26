@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 @Entity
 @Table(name = "usuario")
-public class Usuario implements UserDetails{
+public class Usuario{
 
 	/**
 	 * 
@@ -555,47 +555,6 @@ public class Usuario implements UserDetails{
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Valoracion")
 	public List<Valoracion> getValoracion() {
 		return valoracion;
-	}
-
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		List<GrantedAuthority> roles = new ArrayList<>();
-		
-		if(rol != null) {
-			roles.add(new SimpleGrantedAuthority(rol.getId().toString()));
-		}
-		 
-		return roles;
-	}
-
-	@Override
-	public boolean isAccountNonExpired() {
-		return true;
-	}
-
-	@Override
-	public boolean isAccountNonLocked() {
-		return true;
-	}
-
-	@Override
-	public boolean isCredentialsNonExpired() {
-		return true;
-	}
-
-	@Override
-	public boolean isEnabled() {
-		return true;
-	}
-
-	@Override
-	public String getPassword() {
-		return password;
-	}
-
-	@Override
-	public String getUsername() {
-		return username;
 	}
 
 	/**
