@@ -1,7 +1,5 @@
 package com.http.mska.dto;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -15,9 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
@@ -31,7 +26,6 @@ public class Usuario{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
 
 	/** Se genera el ID de forma auto incremental en la base de datos */
 	@Id
@@ -164,8 +158,7 @@ public class Usuario{
 			String poblacion, String pais, String codigoPostal, Date fechaRegistro, Date fechaNacimiento, int movil,
 			String instagram, String linkedin, int numEntrevista, int numMensajes, int numTrabajos, int numValoraciones,
 			String uriFoto, Tecnico tecnico, Reclutador reclutador, List<Mensaje> mensaje, List<Entrevista> entrevista, 
-			List<Trabajo> trabajo, List<ComentarioTrabajo> comentarioTrabajo, List<PostUsuario> postUsuario, List<Valoracion> valoracion,
-			Rol rol) {
+			List<Trabajo> trabajo, List<ComentarioTrabajo> comentarioTrabajo, List<PostUsuario> postUsuario, List<Valoracion> valoracion) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -194,7 +187,6 @@ public class Usuario{
 		this.comentarioTrabajo = comentarioTrabajo;
 		this.postUsuario = postUsuario;
 		this.valoracion = valoracion;
-		this.rol = rol;
 	}
 	
 	
@@ -504,20 +496,6 @@ public class Usuario{
 	 */
 	public void setValoracion(List<Valoracion> valoracion) {
 		this.valoracion = valoracion;
-	}
-		
-	/**
-	 * @return the rol
-	 */
-	public Rol getRol() {
-		return rol;
-	}
-
-	/**
-	 * @param rol the rol to set
-	 */
-	public void setRol(Rol rol) {
-		this.rol = rol;
 	}
 
 	/** JSONIGNORE para eliminar la recursividad ! */
