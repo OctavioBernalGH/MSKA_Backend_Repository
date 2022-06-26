@@ -96,10 +96,6 @@ public class Usuario{
 	@JoinColumn(name="fk_id_reclutador", nullable = true)
 	private Reclutador reclutador;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="fk_id_rol")
-	private Rol rol;
-	
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id")
 	private List<Mensaje> mensaje;
