@@ -7,6 +7,5 @@ import com.http.mska.dto.Usuario;
 @Repository
 public interface IUsuarioDAO extends JpaRepository<Usuario, Long>{
 
-	Usuario findByUsername(String username);
-	// Interface para la definición de métodos personalizados.
+
 }
