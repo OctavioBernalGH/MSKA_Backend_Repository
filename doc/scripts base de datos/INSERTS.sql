@@ -3,16 +3,17 @@
 	1. INSERTAR RECLUTADOR
 ============================
 */
+-- NUEVOS --
 insert into reclutador (experiencia, nivel, web, tipo_reclutador)
-values (50, 1, 'testweb1', 'reclutado 1');
+values (1, 1, 'Jose Manuel', 'IOS Recruiter');
 insert into reclutador (experiencia, nivel, web, tipo_reclutador)
-values (100, 2, 'testweb2', 'reclutado 2');
-insert into reclutador (web, tipo_reclutador)
-values ('testweb3', 'reclutado 3');
-insert into reclutador (web, tipo_reclutador)
-values ('testweb4', 'reclutado 4');
-insert into reclutador (web, tipo_reclutador)
-values ('testweb5', 'reclutado 5');
+values (1, 100, 'Antonio Molino', 'Backend Recruiter');
+insert into reclutador (experiencia, nivel, web, tipo_reclutador)
+values (16, 986, 'Carlos Javier', 'Frontend Recruiter');
+insert into reclutador (experiencia, nivel, web, tipo_reclutador)
+values (1, 6, 'Eva Carranza', 'Senior Recruiter');
+insert into reclutador (experiencia, nivel, web, tipo_reclutador)
+values (1, 1, 'Anna Bernal', 'Junior Recruiter');
 
 -- select * from reclutador;
 
@@ -22,16 +23,17 @@ values ('testweb5', 'reclutado 5');
 	2. INSERTAR TECNICO
 ============================
 */
-insert into tecnico (experiencia, nivel, github, pinterest, trabajo_en_curso, trabajos_finalizados, tipo_tecnico)
-values (50, 1, 'github1', 'pinterest1 ', 1, 5, 'test1');
-insert into tecnico (nivel, github, pinterest, trabajo_en_curso, trabajos_finalizados, tipo_tecnico)
-values ( 2, 'github2', 'pinterest2', 1, 5, 'test3');
-insert into tecnico (experiencia,  github, pinterest, trabajo_en_curso, trabajos_finalizados, tipo_tecnico)
-values (150, 'github3', 'pinterest3', 10, 50, 'test4');
-insert into tecnico (experiencia, nivel, github, pinterest, trabajos_finalizados, tipo_tecnico)
-values (150, 3, 'github4', 'pinterest4',  50, 'test5');
+-- NUEVOS --
 insert into tecnico (experiencia, nivel, github, pinterest, trabajo_en_curso, tipo_tecnico)
-values (150, 3, 'github5', 'pinterest5', 10, 'test6');
+values (100, 2, 'https://github.com/OctavioBernalGH', 'www.pinterest.com/octaviobernal', 16, 'Junior Developer');
+insert into tecnico (experiencia, nivel, github, pinterest, trabajo_en_curso, tipo_tecnico)
+values (450, 5, 'https://github.com/Kay-Nicte', 'www.pinterest.com/kay-nicte', 28, 'Senior Developer');
+insert into tecnico (experiencia, nivel, github, pinterest, trabajo_en_curso, tipo_tecnico)
+values (1800, 22, 'https://github.com/mednologic', 'www.pinterest.com/mednologic', 58, 'Software Analist');
+insert into tecnico (experiencia, nivel, github, pinterest, trabajo_en_curso, tipo_tecnico)
+values (999999, 99, 'https://github.com/DavidDalmauDieguez', 'www.pinterest.com/DavidDalmauDieguez', 689, 'Software architect');
+insert into tecnico (experiencia, nivel, github, pinterest, trabajo_en_curso, tipo_tecnico)
+values (180, 3, 'https://github.com/pablobernal', 'www.pinterest.com/pablobernal', 19, 'Junior Developer');
 
 -- select * from tecnico;
 
@@ -41,32 +43,32 @@ values (150, 3, 'github5', 'pinterest5', 10, 'test6');
 	3. INSERTAR USUARIO
 ============================
 */
-insert into usuario (nombre, apellidos, email, username, password, 
+-- NUEVOS --
+insert into usuario (nombre, apellidos, email, nombre_usuario, contraseña, 
 poblacion, pais, cp, fecha_registro, fecha_nacimiento, movil, instagram, linkedin, 
-num_entrevista, num_mensajes, num_trabajos, num_valoraciones, fk_id_reclutador, fk_id_rol, fk_id_tecnico, uri_foto) 
-values ('Test1', 'ApeTest', 'mailTest', 'usernameTest', 'passTest', 'poblaTest', 'paisTest', '43006' , current_timestamp(), '2015/10/10', 600000, 'instaTest',
-'linkedTest', 5,5,5,5,1,1, 'uriTest' );
-/* Insert en usuarios */
-insert into usuario (nombre, apellidos, email, username, password,  
+num_entrevista, num_mensajes, num_trabajos, num_valoraciones, fk_id_reclutador, fk_id_tecnico, uri_foto) 
+values ('Uri', 'López Bosch', 'uri@mail.me', 'urilopez', '123456789', 'Cambrils', 'España', '43205' , current_timestamp(), '1980/12/13', 606123456, 'www.instagram.es/mednologic',
+'https://www.linkedin.com/in/oriollopezbosch/', 18,68,58,31,1,21, 'foto_uri' );
+insert into usuario (nombre, apellidos, email, nombre_usuario, contraseña, 
 poblacion, pais, cp, fecha_registro, fecha_nacimiento, movil, instagram, linkedin, 
-num_entrevista, num_mensajes, num_trabajos, num_valoraciones, fk_id_reclutador, fk_id_rol, fk_id_tecnico, uri_foto) 
-values ('Test2', 'a22222peTest', '22222mailTest', '22222usernameTest', 'passTest', 'poblaTest', 'paisTest', '43006' , current_timestamp(), '2015/10/10', 600000, 'instaTest2',
-'linkedTest2', 5,5,5,5,11,21, 'uriTest' );
-insert into usuario (nombre, apellidos, email, username, password, 
+num_entrevista, num_mensajes, num_trabajos, num_valoraciones, fk_id_reclutador, fk_id_tecnico, uri_foto) 
+values ('Ixabel', 'Justo', 'ixabel@mail.me', 'ixajusto', '987654321', 'Irún', 'España', '20301' , current_timestamp(), '1980/12/13', 606987654, 'www.instagram.es/kay-nicte',
+'https://www.linkedin.com/in/ixabeljusto/', 36,99,28,48,1,11, 'foto_ixa' );
+insert into usuario (nombre, apellidos, email, nombre_usuario, contraseña, 
 poblacion, pais, cp, fecha_registro, fecha_nacimiento, movil, instagram, linkedin, 
-num_entrevista, num_mensajes, num_trabajos, num_valoraciones, fk_id_reclutador, fk_id_rol, fk_id_tecnico, uri_foto) 
-values ('Test3', 'a33333peTest', '33333mailTest', '33333usernameTest', 'passTest', 'poblaTest', 'paisTest', '43006' , current_timestamp(), '2015/10/10', 600000, 'instaTest3',
-'linkedTest3', 5,5,5,5,21,11, 'uriTest' );
-insert into usuario (nombre, apellidos, email, username, password,  
+num_entrevista, num_mensajes, num_trabajos, num_valoraciones, fk_id_reclutador, fk_id_tecnico, uri_foto) 
+values ('David', 'Dalmau', 'daviddalmau@mail.me', 'davidubi', '159951', 'Reus', 'España', '43206' , current_timestamp(), '1980/12/13', 606123456, 'https://www.linkedin.com/in/daviddalmaudieguez/',
+'https://www.linkedin.com/in/daviddalmaudieguez/', 1268,2563,658,360,1,31, 'foto_david' );
+insert into usuario (nombre, apellidos, email, nombre_usuario, contraseña, 
 poblacion, pais, cp, fecha_registro, fecha_nacimiento, movil, instagram, linkedin, 
-num_entrevista, num_mensajes, num_trabajos, num_valoraciones, fk_id_reclutador, fk_id_rol, fk_id_tecnico, uri_foto) 
-values ('Test2', 'a44444peTest', '44444mailTest', '44444usernameTest', 'passTest', 'poblaTest', 'paisTest', '43006' , current_timestamp(), '2015/10/10', 600000, 'instaTest4',
-'linkedTest4', 5,5,5,5,31,31, 'uriTest' );
-insert into usuario (nombre, apellidos, email, username, password,  
+num_entrevista, num_mensajes, num_trabajos, num_valoraciones, fk_id_reclutador, fk_id_tecnico, uri_foto) 
+values ('Octavio', 'Bernal', 'octabevi@mail.me', 'octabevi', '753357', 'Tarragona', 'España', '43006' , current_timestamp(), '1993/04/11', 606456987, 'www.instagram.es/octabevi',
+'https://www.linkedin.com/in/octavio-bernal-vilana/', 29,161,16,48,1,1, 'foto_octavio' );
+insert into usuario (nombre, apellidos, email, nombre_usuario, contraseña, 
 poblacion, pais, cp, fecha_registro, fecha_nacimiento, movil, instagram, linkedin, 
-fk_id_reclutador, fk_id_rol, fk_id_tecnico, uri_foto) 
-values ('Test2', 'a55555peTest', '555555mailTest', '55555usernameTest', 'passTest', 'poblaTest', 'paisTest', '43006' , current_timestamp(), '2015/10/10', 600000, 'instaTest5',
-'linkedTest5', 41,41, 'uriTest' );
+num_entrevista, num_mensajes, num_trabajos, num_valoraciones, fk_id_reclutador, fk_id_tecnico, uri_foto) 
+values ('Pablo', 'Bernal', 'pabevi@mail.me', 'pabevi', '852258', 'Tarragona', 'España', '43006' , current_timestamp(), '1993/04/11', 606753357, 'www.instagram.es/pabevi',
+'https://www.linkedin.com/in/pablobernalvilana/', 29,161,16,48,1,41, 'foto_pablo' );
 
 -- select * from usuario;
 
@@ -76,16 +78,17 @@ values ('Test2', 'a55555peTest', '555555mailTest', '55555usernameTest', 'passTes
 	4. INSERTAR VALORACION
 ============================
 */
+-- NUEVOS --
 insert into valoracion (fk_id_usuario, estrellas, comentario, reclutador, tecnico)
-values (1, 1, 'Me gusta1', 'Paco1', 'Manoli1');
+values (1, 4, 'Es buen lugar para desempeñar un trabajo.', 'Jose Manuel', 'Octavio');
 insert into valoracion (fk_id_usuario, estrellas, comentario, reclutador, tecnico)
-values (11, 2, 'Me gusta2', 'Paco2', 'Manoli2');
+values (1, 5, 'Muy satisfecho con el trabajo realizado y los compañeros', 'Antonio Molino', 'Uri');
 insert into valoracion (fk_id_usuario, estrellas, comentario, reclutador, tecnico)
-values (21, 3, 'Me gusta3', 'Paco3', 'Manoli3');
+values (1, 1, 'Me encanta mi nuevo puesto de trabajo.', 'Jose Javier', 'Ixa');
 insert into valoracion (fk_id_usuario, estrellas, comentario, reclutador, tecnico)
-values (31, 4, 'Me gusta4', 'Paco4', 'Manoli4');
+values (1, 4, 'Muy contento con mis compañeros.', 'Eva Patricia', 'David');
 insert into valoracion (fk_id_usuario, estrellas, comentario, reclutador, tecnico)
-values (41, 5, 'Me gusta5', 'Paco5', 'Manoli5');
+values (1, 5, 'Me encanta mi puesto de trabajo.', 'Jose Antonia', 'Pablo');
 
 -- select * from valoracion;
 
@@ -93,7 +96,7 @@ values (41, 5, 'Me gusta5', 'Paco5', 'Manoli5');
 /*
 ============================
 	5. INSERTAR ENTREVISTA
-============================
+============================ 
 */
 insert into entrevista (fk_id_entrevistador, fk_id_entrevistado, fecha_entrevista, duracion, estado_entrevista_bol)
 values (1, 1, '2022-05-05 22:00:00', 30, 1);
@@ -119,13 +122,13 @@ values (41, 41, '2023-08-10 22:00:00', 30, 0);
 insert into mensaje (fk_id_emisor, mensaje, fecha_mensaje, fk_id_receptor)
 values (1, 'Buenos días quería contactar contigo MP.', current_timestamp(), 11);
 insert into mensaje (fk_id_emisor, mensaje, fecha_mensaje, fk_id_receptor)
-values (11, 'Despedido', current_timestamp(), 21);
+values (11, 'Estoy interesado en entrevistarte!', current_timestamp(), 21);
 insert into mensaje (fk_id_emisor, mensaje, fecha_mensaje, fk_id_receptor)
-values (21, 'Contratado !', current_timestamp(), 31);
+values (21, '¿ En qué proyectos has participado ?', current_timestamp(), 31);
 insert into mensaje (fk_id_emisor, mensaje, fecha_mensaje, fk_id_receptor)
-values (31, 'Contratado !', current_timestamp(), 41);
+values (31, 'Seguimos en contacto.', current_timestamp(), 41);
 insert into mensaje (fk_id_emisor, mensaje, fecha_mensaje, fk_id_receptor)
-values (41, 'Contratado !', current_timestamp(), 1);
+values (41, 'Le contactaré al finalizar el proceso', current_timestamp(), 1);
 
 -- select * from mensaje;
 
@@ -242,15 +245,15 @@ values (41,41);
 ============================
 */
 insert into comentario_trabajo(fk_id_usuario, fk_id_trabajo, comentario, fecha_comentario)
-values (1,1, 'Este trabajo es horrible', current_timestamp());
+values (1,1, 'Estoy encantado con mi nuevo puesto.', current_timestamp());
 insert into comentario_trabajo(fk_id_usuario, fk_id_trabajo, comentario, fecha_comentario)
-values (11,11, 'Este trabajo es horrible2', current_timestamp());
+values (11,11, 'Me gusta mucho mi trabajo.', current_timestamp());
 insert into comentario_trabajo(fk_id_usuario, fk_id_trabajo, comentario, fecha_comentario)
-values (21,21, 'Este trabajo es horrible3', current_timestamp());
+values (21,21, 'Solo se podría mejorar el sueldo, pero con experiencia ya crecerá.', current_timestamp());
 insert into comentario_trabajo(fk_id_usuario, fk_id_trabajo, comentario, fecha_comentario)
-values (31,31, 'Este trabajo es horrible4', current_timestamp());
+values (31,31, 'Todo perfecto.', current_timestamp());
 insert into comentario_trabajo(fk_id_usuario, fk_id_trabajo, comentario, fecha_comentario)
-values (41,41, 'Este trabajo es horrible5', current_timestamp());
+values (41,41, 'Esta todo correcto.', current_timestamp());
 
 -- select * from comentario_trabajo;
 
@@ -263,16 +266,16 @@ values (41,41, 'Este trabajo es horrible5', current_timestamp());
 ============================
 */
 insert into post_usuario(fk_id_usuario, retwit, likes, fecha_post, link, uri_foto)
-values (1, 100, 200, current_timestamp(), 'www.linkfalso....', 'uri foto1');
+values (1, 155, 186, current_timestamp(), 'Roborock S7 Pro Ultra: el robot aspirador con mapeo 3D que lleva la limpieza automatizada al siguiente nivel', 'uri fotografia1');
 insert into post_usuario(fk_id_usuario, retwit, likes, fecha_post, link, uri_foto)
-values (11, 100, 200, current_timestamp(), 'www.linkfalso2....', 'uri foto2');
+values (11, 366, 836, current_timestamp(), 'Valve aumenta la producción de la Steam Deck y anuncia que doblará los envíos semanales', 'uri fotografia2');
 insert into post_usuario(fk_id_usuario, retwit, likes, fecha_post, link, uri_foto)
-values (21, 100, 200, current_timestamp(), 'www.linkfalso3....', 'uri foto3');
+values (21, 36, 118, current_timestamp(), 'El nuevo MacBook Pro M2 de 13” tiene un SSD hasta un 50% más lento que el del modelo antiguo', 'uri fotografia3');
 insert into post_usuario(fk_id_usuario, retwit, fecha_post, link, uri_foto)
-values (31, 200, current_timestamp(), 'www.linkfalso4....', 'uri foto4');
+values (31, 39893, current_timestamp(), 'Tenemos un problema de energía en la Luna. La NASA cree que podremos solucionarlo con fisión nuclear', 'uri fotografia4');
 insert into post_usuario(fk_id_usuario, likes, fecha_post, link, uri_foto)
-values (41, 200, current_timestamp(), 'www.linkfalso5....', 'uri foto5');
-
+values (41, 1594698, current_timestamp(), 'China ha seducido a empresas de todo el mundo durante décadas. Ahora su atractivo se está acabando', 'uri fotografia5');
+-- en link pner descripción --
 -- select * from post_usuario;
 
 
@@ -284,15 +287,15 @@ values (41, 200, current_timestamp(), 'www.linkfalso5....', 'uri foto5');
 ============================
 */
 insert into skill (tipo, validado, descripcion, cantidad_exp)
-values ('Skill Test 1', 1, ' testeo de skills 1', 5);
+values ('Java basics', 1, ' Skill: Java basics with objects.', 50);
 insert into skill (tipo, validado, descripcion, cantidad_exp)
-values ('Skill Test 2', 1, ' testeo de skills 2', 10);
+values ('Machine Learning basics', 1, ' Skill: Machine Learning with python', 100);
 insert into skill (tipo, validado, descripcion, cantidad_exp)
-values ('Skill Test 3', 0, ' testeo de skills 3', 15);
+values ('Angular certification', 0, ' Skill: Angular certification basic', 230);
 insert into skill (tipo, validado, descripcion, cantidad_exp)
-values ('Skill Test 4', 0, ' testeo de skills 4', 20);
+values ('Html advance', 1, 'Skill: html advanced', 2000);
 insert into skill (tipo, validado, descripcion, cantidad_exp)
-values ('Skill Test 5', 0, ' testeo de skills 5', 25);
+values ('React', 1, ' Skill: react native', 6900);
 
 -- select * from skills;
 
@@ -346,5 +349,7 @@ values (41, 'Examen typescript', 'Tipo 3', 'Descripción 3', 35);
 	TABLA SECURITY
 ============================
 */
+
+select * from usuariosecurity;
 INSERT INTO usuariosecurity (username, password, role) 
 VALUES ('admin1', '$2a$10$XURPShQNCsLjp1ESc2laoObo9QZDhxz73hJPaEv7/cBha4pk0AgP.','superAdministrador');
